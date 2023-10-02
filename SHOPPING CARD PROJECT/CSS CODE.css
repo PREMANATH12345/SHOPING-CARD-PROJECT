@@ -1,0 +1,464 @@
+:root{
+    --head: rgb(95, 15, 15);
+    --white: lightyellow;
+    --black: black;
+    --light:white;
+    --green:green;
+    --litegreen:rgb(60, 192, 60);
+    --grey:grey;
+}
+body{
+    background-color: var(--white);
+    margin: 0;
+    padding: 0;
+    
+}
+
+/*HEADER*/
+header{
+    position: sticky;
+    top: 0%;
+}
+
+#navigation-bar{
+    display: grid;
+    background-color: var(--head);
+    align-items: start;
+    grid-template-columns: 5% 15% 30% 20% 30%;
+    align-items: center;
+    column-gap: 0px;
+    vertical-align: baseline;
+}
+
+#navigation-bar #name:hover{
+    border: none;
+}
+#sideimg{
+    justify-self:center;
+    font-size: 20px;
+    margin-left: 5px;
+    padding: 10px;
+}
+#sideimg:hover{
+    border-radius:20px;
+    background-color: rgba(233, 213, 213, 0.471);
+}
+#sidebar{
+    background-color: var(--head);
+}
+#sidebar a{
+    display: block;
+    color: white;
+    text-decoration: none;
+    padding: 15px 10px;
+}
+#sidebar a:hover{
+    background-color: gray;
+    color: var(--white);
+}
+#navigation-bar a{
+    border: 1px solid transparent;
+    padding: 10px;
+    color: rgb(255, 255, 255);
+    text-decoration: none;
+    margin-left: 10px;
+    font-weight: 600;
+}
+#navigation-bar a:hover{
+    border-bottom: 2px solid rgb(255, 255, 255);
+}
+#navigation-bar input{
+    border-radius:20px;
+    width: 220px ;
+    height: 35px;
+    text-indent: 5px;
+    padding: 10px;
+}
+#navigation-bar #na1{
+   position: relative;
+   bottom: 5px;
+   left: 8px;
+}
+#navigation-bar #na2{
+    display: flex;
+    justify-self: start;
+    
+}
+#navigation-bar #na3{
+    display: flex;
+    justify-self:center;
+}
+#navigation-bar #na4{
+    display: flex;
+    justify-self:end;
+    margin-right: 5px;
+}
+#profile{
+   position: absolute;
+   width: 0%;
+   height: 280px;
+   background-color: var(--head);   
+   right: 0px; 
+   transition: width 0.5s;
+   overflow: hidden;
+}
+#profile #proimg{
+    height: 100px;
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    overflow: hidden;
+}
+#profile #probut{
+    position: absolute;
+    padding: 5px;
+    top: 70%;
+    left: 18.5%;
+    border-radius: 10px;
+    background-color: blue;
+    color: white;
+}
+#profile #probut:hover{
+    background-color: rgb(32, 29, 128);
+}
+#cardbox{
+  
+    background-color: var(--head);
+    color: white;
+   
+}
+#cardbox table{
+    width: 370px;
+    display:table;
+  }
+  #cardbox th{
+    border-bottom: 1px solid rgb(255, 255, 255);
+  }
+  #cardbox th,td{ 
+    height: 40px;
+  }
+#cardbox button{
+    padding: 6px;
+    border-radius: 8px;
+    background-color: var(--green);
+    color: white;
+  }
+  #cardbox button:hover{
+    background-color: var(--litegreen);
+  }
+ 
+
+  #phoff{
+
+    display: grid;
+    grid-template-columns: auto auto auto auto auto auto;
+  }
+  #phoff figure{
+    
+    border: 1px solid black;
+    border-radius: 5px;
+    box-shadow: 6px 8px rgba(71, 59, 59, 0.363);
+    margin: 10px 20px;
+  }
+  #phoff figure:hover{
+    box-shadow: 8px 10px rgba(44, 39, 39, 0.788);
+
+}
+#carouselExampleInterval img{
+    height: 500px;
+    width: 100%;
+}
+#carouselExampleInterval1 img{
+    height: 500px;
+    width: 100%;
+}
+  #phoff img{
+    width: 100%;
+    height: 180px;
+  }
+  #phoff figcaption{
+    font-size: 20px;
+    text-indent: 10px;
+    font-weight: bold;
+  }
+  #laoff{
+    display: grid;
+    grid-template-columns: auto auto auto auto auto auto;
+  }
+  #laoff figure{
+    border: 1px solid black;
+    border-radius: 5px;
+    box-shadow: 6px 8px rgba(71, 59, 59, 0.363);
+    margin: 10px 20px;
+  }
+  #laoff figure:hover{
+    box-shadow: 8px 10px rgba(44, 39, 39, 0.788);
+
+}
+
+  #laoff img{
+    height: 180px;
+    width: 100%;
+
+  }
+  #laoff figcaption{
+    font-size: 20px;
+    text-indent: 10px;
+    font-weight: bold;
+  }
+  #heoff{
+    display: grid;
+    grid-template-columns: auto auto auto auto auto auto;
+  }
+  #heoff figure{
+    border: 1px solid black;
+    border-radius: 5px;
+    box-shadow: 6px 8px rgba(71, 59, 59, 0.363);
+    margin: 10px 20px;
+  }
+  #heoff figure:hover{
+    box-shadow: 8px 10px rgba(44, 39, 39, 0.788);
+
+}
+
+  #heoff img{
+    height: 180px;
+    width: 100%;
+  }
+  #heoff figcaption{
+    font-size: 20px;
+    text-indent: 10px;
+    font-weight: bold;
+  }
+/*ar
+/*article*/
+
+
+#ind,#lap,#pho,#gad{
+   display: grid;
+   grid-template-columns:auto auto auto auto auto auto ;
+    margin-top: 20px;
+    margin-left: 50px;
+}
+#h1 figure{
+    width: 155px;
+    background-color:var(--lite) ;
+    color: var(--black);
+    border: 1px solid black transparent;
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: 1px 8px 6px 1px rgba(0, 0, 0, 0.174);
+}
+#h1 figure:hover{
+    box-shadow: 4px 6px 8px 4px var(--grey);
+
+}
+#h1 figure figcaption{
+font-weight: 600;
+} 
+#h1 img{
+    height: 200px;
+    width: 140px;
+    border-radius: 10px;
+}
+#h1 .rat{
+ color: var(--black);
+}
+#h1 .rating{
+    color:white ;
+    border: 1px solid transparent;
+    background-color: var(--green);
+    padding: 2px;
+    border-radius: 7px;
+}
+#h1 .rate{
+    color: var(--black);
+}
+#h1 .off{
+    color: var(--green);
+}
+#h1 .imgbut{
+    color: white;
+    background-color: var(--green);
+    padding: 2px;
+    width: 100%;
+    border-radius: 7px;
+
+}
+#h1 .imgbut:hover:hover{
+    background-color: var(--litegreen);
+}
+#h1 .lapimg{
+    height: 130px;
+}
+#h1 .HEAimg{
+    height: 170px;
+}
+
+
+
+
+/* Footer*/
+#footer{
+    background-color: var(--head);
+    color: white;
+    display: grid;
+    padding: 30px;
+    grid-template-columns:  20% 20% 20% 20% 20%;
+}
+
+
+
+
+
+@media only screen and (max-width:1200px){
+    #ind,#lap,#pho,#gad{
+        grid-template-columns:auto auto auto auto auto;
+
+    }
+    #phoff{
+        grid-template-columns: auto auto auto auto auto;
+      }
+      #laoff{
+        grid-template-columns: auto auto auto auto auto;
+      }
+      #heoff{
+        grid-template-columns: auto auto auto auto auto;
+      }
+    
+}
+
+@media only screen and (max-width:1000px){
+    #navigation-bar #na2{
+        display: none;
+    }
+    #navigation-bar{
+        grid-template-columns: auto auto auto auto;
+    }
+    #ind,#lap,#pho,#gad{
+        grid-template-columns: auto auto auto auto;
+    }
+    
+    #navigation-bar input{
+        width: 200px;
+    }
+    #footer{
+        grid-template-columns: auto auto auto auto;
+    }
+    #footer #fox{
+        grid-column: 1 /span 4;
+    }
+    #navigation-bar #sidebar{
+        display: none;
+    }
+    #phoff{
+        grid-template-columns: auto auto auto auto ;
+      }
+      #laoff{
+        grid-template-columns: auto auto auto auto ;
+      }
+      #heoff{
+        grid-template-columns: auto auto auto auto;
+      }
+}
+
+@media only screen and (max-width:800px){
+    #ind,#lap,#pho,#gad{
+        grid-template-columns: auto auto auto;
+    }
+    #phoff{
+        grid-template-columns: auto auto auto  ;
+      }
+      #laoff{
+        grid-template-columns: auto auto auto ;
+      }
+      #heoff{
+        grid-template-columns: auto auto auto;
+      }
+}
+
+@media only screen and (max-width:600px){
+    #ind,#lap,#pho,#gad{
+        grid-template-columns:auto auto;
+    }
+    #dark{
+        display: none;
+    }
+    #navigation-bar input{
+        width: 150px;
+    }
+    #navigation-bar{
+        grid-template-columns:auto auto auto auto ;
+    }
+    #footer{
+        grid-template-columns: 50% 50%;
+    }
+    #footer #fox{
+        grid-column: 1 /span 2;
+    }
+    #navigation-bar input{
+        width: 100px;
+    }
+    #phoff{
+        grid-template-columns: auto auto ;
+      }
+      #laoff{
+        grid-template-columns: auto auto ;
+      }
+      #heoff{
+        grid-template-columns: auto auto;
+      }
+ 
+}
+
+   
+/*FORM*/
+
+form{
+    display: grid;
+    grid-template-columns: 50% 50%;
+    row-gap: 25px;
+    color: white;
+    border: 2px solid transparent;
+    padding: 20px;
+    margin: auto;
+    height: auto;
+    max-width: 400px;
+    background-color: var(--head);
+    border-radius: 10px;
+    border: transparent;
+}
+input{
+    display: block;
+    border-radius: 12px;
+    padding: 3px;
+}
+input:hover{
+    background-color: rgba(250, 235, 215, 0.767);
+}
+input:focus{
+    background-color: rgba(250, 235, 215, 0.767);
+}
+button{
+    padding: 3px;
+    border: 2px solid transparent;
+    font-weight: 700;
+}
+button:hover{
+    background-color: rgb(42, 165, 46);
+    color: wheat;
+  
+}
+select{
+    width: 100%;
+    border-radius: 10PX;
+    padding: 3PX;
+}
+:out-of-range{
+border: 2PX red;
+} 
+
+
+
+

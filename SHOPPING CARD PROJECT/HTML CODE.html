@@ -1,0 +1,1272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FOXCON</title>
+    <link rel="shortcut icon"  href="Picsart_23-09-12_10-54-18-695.jpg" type="image/x-icon">
+   
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    
+    
+    <script src="ex.js"></script>
+    <link rel="stylesheet" href="ex.css">
+    <script src="https://kit.fontawesome.com/a656394404.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+
+    
+</head>
+<body>
+    
+    <header>
+
+    <div id="navigation-bar">
+        
+    <button id="sideimg" class="btn" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasWithBothOptions" aria-controls="offcanvasWithBothOptions"><i  class="fa-solid fa-bars" style="color: #ffffff;"></i></button>
+
+    <div id="na1">
+        <a style="border: none;" ></a><img onclick="home()" src="Picsart_23-08-26_16-04-31-738.png" style="height: 70px; vertical-align:top;display: inline;" alt=""></a>
+    </div>
+
+    <div id="na2">
+        <a id="phone" onclick="pho()" href="#">PHONES</a>
+        <a id="laptop" onclick="lap()" href="#"> LAPTOPS</a>
+        <a id="gadget" onclick="gad()" href="#">GADGETS</a>
+    </div>
+
+    <div id="na3">
+        <input type="search"  placeholder="SEARCH...">
+    </div>
+
+    <div id="na4">
+        <a id="dark" onclick="dark()" style="border: none;" href="#"><i class="fa-solid fa-circle-half-stroke" style="color: #ffffff;"></i></a>
+        <a class="btn" onclick="card()" type="button" data-bs-toggle="offcanvas" href="#offcanvasRight" aria-controls="offcanvasRight"><i class="fa-solid fa-cart-shopping"></i> CART <span id="countt" class="badge text-bg-success"></span></a>
+
+          <div class="offcanvas offcanvas-end" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
+            
+          <div id="cardbox" class="offcanvas-body">
+            <div>
+            <button style="float: right; background-color: white;" type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#offcanvasResponsive" aria-label="Close"></button>
+        </div> 
+            <p style="text-align: center;" id="q">ADD SOME ITEMS</p>
+                <br>
+                <table style="border-top: 1px solid white;text-align: center;display: none;" id="p">
+                    <tr>
+                        <th>TOTAL</td>
+                        <th id="total">0</td>
+                    </tr>
+                </table>
+                <br>
+                <button style="display: none;" onclick="order()" id="order">ORDER</button>
+         </div>
+         </div>
+
+
+
+
+        <div data-bs-toggle="modal" href="#exampleModal" style="border-radius: 50%; height: 35px; overflow: hidden;">
+            <img id="imggg" style="height: 35px;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIIAAACCCAMAAAC93eDPAAAAMFBMVEXk5ueutLewt7np6+ursbTh4+SzubzBxsjT1ti6v8Lc3+DIzM7X2tvM0NLFyczP09R8ZhjBAAAC4klEQVR4nO2a2XLrIAyGDcJsXvL+b3swdVO3dUCyJXJmyj+9ykX5RguSJYahq6urq6urq6urq6vr7wngnYcP0U8uBLcuc3wDCYzeaWU+pfQ6NyYYV5vOPcoY61sSTD/O3ymsb+QOmNUZQIYIYxOE6RXAxqBbhIQrEGwQD3FnhDJBA4YqQWJYRAkqXtglmJ3wQBEoJZcXI5JAWTEEiySQCwesG5K0kCvQRkhmmEQyc8EbQQlFJMEImxkECGaSEZTi9wSsNATDX6+AaASzsiNEIoIK7Ai0fNjMwI6AK1BHBPZgCESC1DdwI5BuhYywcqcllUApx4yArtNfCh1BAOFCLLAjkDOCPRwv3AsLN4IjI7C38sRanRDY+yZqxyLRyL+/WAMxJfirFOkrIiPwEwwjjYD9YkoCWtMiMm0hdY9WZs5BMINAC5+Fr5aGPyN3lWZt3xHEZhyAmDRlAsFpEy4xDXuZPmrGEIgFws5Qd4UVHgJDjcHIjbqeej0Eb+GFD42FvBAZrpwIltN1xDaHj632QzBMJ94wVn4If9Q4WXWwhTE6tF5Obfu5R9Cfeeh8m3XMb4zEkTS+ZVkJ6dAxxnn2+S9x5J9anZ7O9ouzVucYyFtKpbS1YfWbQeTP91Ow5jwpt5+DE91WQpzCi9O/gdh1FnEKxOXngrZAod3M7JJk/1AsDWe2eHDmKSQDUM7fKTTfDHihGeBoimnkcIfXFwEyhLpdOiEiO9bXEDffFAC6bS9B3Oli4pUoPGEwV981gOc4/wPiWm6wOOHJcMkZ5AVEmeFCa383E36JvMBlJ6B+4hAnKkhpCgFnJB6E/9BCv5SgCv/JHWUAFH4YCTx34jkDDoG8FKUgoMaRtBEnmQFRN6kbeqoQWSFrBIwZpI2AMYOu/5Obqn2Be2kjVO8n7HDzFkMFQZ6gNiInPxe5glDu6yVvxqfKTZx4Sm4qp2WDaEwqI+gGqrx/gxYqEnR1dXV1/S/6BzA0IDjtXgNsAAAAAElFTkSuQmCC" alt="">
+        </div>
+    </div>
+    
+    </div>
+    
+    
+
+    <div id="profile">
+        <div id="proimg"  style="border-radius: 50%; overflow: hidden;" >
+            <img id="imgg" style="height: 100px;" onclick="pic()" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIIAAACCCAMAAAC93eDPAAAAMFBMVEXk5ueutLewt7np6+ursbTh4+SzubzBxsjT1ti6v8Lc3+DIzM7X2tvM0NLFyczP09R8ZhjBAAAC4klEQVR4nO2a2XLrIAyGDcJsXvL+b3swdVO3dUCyJXJmyj+9ykX5RguSJYahq6urq6urq6urq6vr7wngnYcP0U8uBLcuc3wDCYzeaWU+pfQ6NyYYV5vOPcoY61sSTD/O3ymsb+QOmNUZQIYIYxOE6RXAxqBbhIQrEGwQD3FnhDJBA4YqQWJYRAkqXtglmJ3wQBEoJZcXI5JAWTEEiySQCwesG5K0kCvQRkhmmEQyc8EbQQlFJMEImxkECGaSEZTi9wSsNATDX6+AaASzsiNEIoIK7Ai0fNjMwI6AK1BHBPZgCESC1DdwI5BuhYywcqcllUApx4yArtNfCh1BAOFCLLAjkDOCPRwv3AsLN4IjI7C38sRanRDY+yZqxyLRyL+/WAMxJfirFOkrIiPwEwwjjYD9YkoCWtMiMm0hdY9WZs5BMINAC5+Fr5aGPyN3lWZt3xHEZhyAmDRlAsFpEy4xDXuZPmrGEIgFws5Qd4UVHgJDjcHIjbqeej0Eb+GFD42FvBAZrpwIltN1xDaHj632QzBMJ94wVn4If9Q4WXWwhTE6tF5Obfu5R9Cfeeh8m3XMb4zEkTS+ZVkJ6dAxxnn2+S9x5J9anZ7O9ouzVucYyFtKpbS1YfWbQeTP91Ow5jwpt5+DE91WQpzCi9O/gdh1FnEKxOXngrZAod3M7JJk/1AsDWe2eHDmKSQDUM7fKTTfDHihGeBoimnkcIfXFwEyhLpdOiEiO9bXEDffFAC6bS9B3Oli4pUoPGEwV981gOc4/wPiWm6wOOHJcMkZ5AVEmeFCa383E36JvMBlJ6B+4hAnKkhpCgFnJB6E/9BCv5SgCv/JHWUAFH4YCTx34jkDDoG8FKUgoMaRtBEnmQFRN6kbeqoQWSFrBIwZpI2AMYOu/5Obqn2Be2kjVO8n7HDzFkMFQZ6gNiInPxe5glDu6yVvxqfKTZx4Sm4qp2WDaEwqI+gGqrx/gxYqEnR1dXV1/S/6BzA0IDjtXgNsAAAAAElFTkSuQmCC" alt="">
+        </div>
+        <input style="display: none;" type="file" accept="image" name="up" id="up" >
+        <label  id="probut" for="up">UPLOAD IMAGE</label>
+    </div>
+    <!--SIDEBAR-->
+    <div style="width: 35%;" class="offcanvas offcanvas-start" data-bs-scroll="true" tabindex="-1" id="offcanvasWithBothOptions" aria-labelledby="offcanvasWithBothOptionsLabel">
+        
+        <div  style="margin: 0px;"  id="sidebar" class="offcanvas-body">
+                <div>
+               <img style="height: 35px; border-radius: 50%;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIIAAACCCAMAAAC93eDPAAAAMFBMVEXk5ueutLewt7np6+ursbTh4+SzubzBxsjT1ti6v8Lc3+DIzM7X2tvM0NLFyczP09R8ZhjBAAAC4klEQVR4nO2a2XLrIAyGDcJsXvL+b3swdVO3dUCyJXJmyj+9ykX5RguSJYahq6urq6urq6urq6vr7wngnYcP0U8uBLcuc3wDCYzeaWU+pfQ6NyYYV5vOPcoY61sSTD/O3ymsb+QOmNUZQIYIYxOE6RXAxqBbhIQrEGwQD3FnhDJBA4YqQWJYRAkqXtglmJ3wQBEoJZcXI5JAWTEEiySQCwesG5K0kCvQRkhmmEQyc8EbQQlFJMEImxkECGaSEZTi9wSsNATDX6+AaASzsiNEIoIK7Ai0fNjMwI6AK1BHBPZgCESC1DdwI5BuhYywcqcllUApx4yArtNfCh1BAOFCLLAjkDOCPRwv3AsLN4IjI7C38sRanRDY+yZqxyLRyL+/WAMxJfirFOkrIiPwEwwjjYD9YkoCWtMiMm0hdY9WZs5BMINAC5+Fr5aGPyN3lWZt3xHEZhyAmDRlAsFpEy4xDXuZPmrGEIgFws5Qd4UVHgJDjcHIjbqeej0Eb+GFD42FvBAZrpwIltN1xDaHj632QzBMJ94wVn4If9Q4WXWwhTE6tF5Obfu5R9Cfeeh8m3XMb4zEkTS+ZVkJ6dAxxnn2+S9x5J9anZ7O9ouzVucYyFtKpbS1YfWbQeTP91Ow5jwpt5+DE91WQpzCi9O/gdh1FnEKxOXngrZAod3M7JJk/1AsDWe2eHDmKSQDUM7fKTTfDHihGeBoimnkcIfXFwEyhLpdOiEiO9bXEDffFAC6bS9B3Oli4pUoPGEwV981gOc4/wPiWm6wOOHJcMkZ5AVEmeFCa383E36JvMBlJ6B+4hAnKkhpCgFnJB6E/9BCv5SgCv/JHWUAFH4YCTx34jkDDoG8FKUgoMaRtBEnmQFRN6kbeqoQWSFrBIwZpI2AMYOu/5Obqn2Be2kjVO8n7HDzFkMFQZ6gNiInPxe5glDu6yVvxqfKTZx4Sm4qp2WDaEwqI+gGqrx/gxYqEnR1dXV1/S/6BzA0IDjtXgNsAAAAAElFTkSuQmCC" alt="">
+                <span style="color: white;"> USER NAME</span>
+               <button style="float: right; background-color: white;" type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                </div>
+                <hr style="color: white;">
+                <div>
+                <a onclick="home()" href="#">HOME</a>
+                <a onclick="pho()" href="#">PHONES</a>
+                <a onclick="lap()" href="#">LAPTOPS</a>
+                <a onclick="gad()" href="#">GADGETS</a>
+                <a class="btn" style="text-align: start;" onclick="card()" type="button" data-bs-toggle="offcanvas" href="#offcanvasRight" aria-controls="offcanvasRight"><i class="fa-solid fa-cart-shopping"></i> CART <span id="countt" class="badge text-bg-success"></span></a>
+
+      
+        
+              <!-- Button trigger modal -->
+              <a style="text-align: start;" type="button" class="btn" data-bs-toggle="modal" href="#exampleModal">
+                  SIGN IN
+              </a>
+            </div>
+      
+         
+      </div>   
+</header>
+
+<article>
+    
+    <div style="z-index: -1;" id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-inner">
+            
+           <div class="carousel-item" data-bs-interval="5000">
+            <img  src="https://img.freepik.com/premium-psd/social-media-banner-design-with-3d-rendering-shopping-instrument_351527-1226.jpg?size=626&ext=jpg&ga=GA1.1.1741606185.1694412509&semt=ais"  alt="...">
+          </div>
+          <div class="carousel-item" data-bs-interval="5000">
+            <img  src="https://img.freepik.com/premium-psd/online-sale-banner-design-black-friday-3d-rendered_351527-1222.jpg?size=626&ext=jpg&ga=GA1.1.1741606185.1694412509&semt=ais"  alt="...">
+          </div>
+          <div class="carousel-item" data-bs-interval="5000">
+            <img  src="https://img.freepik.com/premium-psd/banner-brazilian-week-3d-render-marketing-campaign-template-design-portuguese_363450-1466.jpg?size=626&ext=jpg&ga=GA1.2.1741606185.1694412509&semt=ais"  alt="...">
+          </div>
+          <div class="carousel-item active" data-bs-interval="5000">
+            <img  src="https://img.freepik.com/premium-psd/fashion-special-discount-offer-3d-banner-template_351527-1246.jpg?size=626&ext=jpg&ga=GA1.2.1741606185.1694412509&semt=ais"  alt="...">
+          </div>
+          <div class="carousel-item" data-bs-interval="5000">
+            <img  src="https://img.freepik.com/premium-vector/sale-banner-template-design-with-geometric-background-big-sale-special-offer-up-80-off-super-sale-end-season-special-offer-banner-vector-illustration_2307-607.jpg?size=626&ext=jpg&ga=GA1.1.1741606185.1694412509&semt=ais"  alt="...">
+          </div>
+          
+          
+        </div> 
+        <!--
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>-->
+      </div>
+      <div id="aaa">
+        <br>
+        <h1 style="text-align: center;">PHONES OFFERS</h1>
+        <hr>
+      <div id="phoff">
+        <figure>
+                <figcaption>80% OFF</figcaption>            <img src="https://img.freepik.com/premium-psd/online-shopping-promotion-mobile-concept_257571-190.jpg?size=626&ext=jpg&ga=GA1.2.1741606185.1694412509&semt=ais" alt="">
+
+        </figure>
+        <figure>
+                <figcaption>50% OFF</figcaption>            <img src="https://img.freepik.com/premium-vector/3d-phone-megaphone-pedestal-cylinder-podium-display-illustration-concept-black-friday-sale-offer-banner-poster-ecommerce-template_22052-3828.jpg?size=626&ext=jpg&ga=GA1.2.1741606185.1694412509&semt=ais" alt="">
+
+        </figure>
+         <figure>
+                <figcaption>20% OFF</figcaption>            <img src="https://img.freepik.com/premium-psd/social-media-ads-mobile-phone-ads-super-sale-discount-offer-instagram-post-design_534178-189.jpg?size=626&ext=jpg&ga=GA1.2.1741606185.1694412509&semt=ais" alt="">
+
+        </figure>
+        
+        <figure>
+                <figcaption>90% OFF</figcaption>            <img src="https://img.freepik.com/premium-vector/flash-sale-online-shopping-promotion-with-editable-text_257571-54.jpg?size=626&ext=jpg&ga=GA1.2.1741606185.1694412509&semt=ais" alt="">
+
+        </figure>
+        <figure>
+                <figcaption>30% OFF</figcaption>            <img src="https://img.freepik.com/premium-psd/super-sale-special-offer-promotion-instagram-post-stories-design-template_85867-402.jpg?size=626&ext=jpg&ga=GA1.2.1741606185.1694412509&semt=ais" alt="">
+
+        </figure>
+        <figure>
+                <figcaption>10% OFF</figcaption>            <img src="https://img.freepik.com/premium-vector/cyber-monday-super-sale-banner-discounts-modern-smart-phones-design_48369-19119.jpg?size=626&ext=jpg&ga=GA1.2.1741606185.1694412509&semt=ais" alt="">
+
+        </figure>
+        <figure>
+                <figcaption>90% OFF</figcaption>            <img src="https://img.freepik.com/premium-vector/year-end-sale-banner-with-smartphone-illustration-e-commerce_437495-138.jpg?size=626&ext=jpg&ga=GA1.2.1741606185.1694412509&semt=ais" alt="">
+
+        </figure>
+        <figure>
+                <figcaption>100% OFF</figcaption>            <img src="https://img.freepik.com/premium-vector/smart-phone-promotion-flash-sale-social-media_528146-33.jpg?size=626&ext=jpg&ga=GA1.2.1741606185.1694412509&semt=ais" alt="">
+
+        </figure>
+        <figure>
+                <figcaption>60% OFF</figcaption>            <img src="https://img.freepik.com/premium-psd/sales-discount-poster-template_23-2149959327.jpg?size=626&ext=jpg&ga=GA1.2.1741606185.1694412509&semt=ais" alt="">
+
+        </figure>
+        <figure>
+                <figcaption>10% OFF</figcaption>            <img src="https://img.freepik.com/premium-psd/social-media-post-black-friday-3d-render-template-design-marketing-campaign_352223-1070.jpg?size=626&ext=jpg&ga=GA1.2.1741606185.1694412509&semt=ais" alt="">
+
+        </figure>
+        <figure>
+                <figcaption>70% OFF</figcaption>            <img src="https://img.freepik.com/premium-psd/smartphone-sale-black-friday-social-media-post-template_66542-255.jpg?size=626&ext=jpg&ga=GA1.2.1741606185.1694412509&semt=ais" alt="">
+
+        </figure>
+        <figure>
+            <figcaption>30% OFF</figcaption>            
+            <img src="https://img.freepik.com/premium-psd/gadget-promotion-banner-template-social-media-post_554907-499.jpg?size=338&ext=jpg&ga=GA1.2.1741606185.1694412509&semt=ais" alt="">
+
+    </figure>
+</div>
+<br>
+
+<br>
+</div>
+
+<div id="bbb">
+    <h1 style="text-align: center;">LAPTOPS OFFERS</h1>
+        <hr>
+<div id="laoff">
+<figure>
+    <figcaption>60% OFF</figcaption>            
+    <img src="https://img.freepik.com/premium-vector/laptop-sale-instagram-post-design-template_148452-100.jpg?size=338&ext=jpg&ga=GA1.2.1741606185.1694412509&semt=ais" alt="">
+</figure>
+<figure>
+    <figcaption>30% OFF</figcaption>            
+    <img src="https://img.freepik.com/premium-psd/post-laptop-computer-sale-electronic-agency-social-media-web-banner-post-template-psd_610210-391.jpg?size=338&ext=jpg&ga=GA1.2.1741606185.1694412509&semt=ais" alt="">
+</figure>
+<figure>
+    <figcaption>20% OFF</figcaption>            
+    <img src="https://img.freepik.com/premium-psd/white-orange-colored-electronic-product-showcase-podium-social-media-web-template_500195-49.jpg?size=338&ext=jpg&ga=GA1.2.1741606185.1694412509&semt=ais" alt="">
+</figure>
+<figure>
+    <figcaption>10% OFF</figcaption>            
+    <img src="https://img.freepik.com/premium-psd/laptop-gadget-sale-social-media-banner-template-premium-psd_120329-135.jpg?size=338&ext=jpg&ga=GA1.2.1741606185.1694412509&semt=ais" alt="">
+</figure>
+<figure>
+    <figcaption>90% OFF</figcaption>            
+    <img src="https://img.freepik.com/premium-vector/laptop-square-flyer-sale-social-media-instagram-post-banner-template_188201-99.jpg?size=338&ext=jpg&ga=GA1.2.1741606185.1694412509&semt=ais" alt="">
+</figure>
+<figure>
+    <figcaption>70% OFF</figcaption>            
+    <img src="https://img.freepik.com/premium-psd/cyber-monday-social-media-banner-template_122059-1225.jpg?size=338&ext=jpg&ga=GA1.2.1741606185.1694412509&semt=ais" alt="">
+</figure>
+<figure>
+    <figcaption>80% OFF</figcaption>            
+    <img src="https://img.freepik.com/premium-vector/black-friday-flyer-with-isometric-laptop_651915-74.jpg?size=338&ext=jpg&ga=GA1.2.1741606185.1694412509&semt=ais" alt="">
+</figure>
+<figure>
+    <figcaption>100% OFF</figcaption>            
+    <img src="https://img.freepik.com/premium-vector/gadget-social-media-post-template-product-sale-promotional-banner_635024-44.jpg?size=338&ext=jpg&ga=GA1.2.1741606185.1694412509&semt=ais" alt="">
+</figure>
+<figure>
+    <figcaption>50% OFF</figcaption>            
+    <img src="https://img.freepik.com/premium-psd/laptop-gaming-sale-social-media-post-template_252779-1000.jpg?size=338&ext=jpg&ga=GA1.2.1741606185.1694412509&semt=ais" alt="">
+</figure>
+<figure>
+    <figcaption>80% OFF</figcaption>            
+    <img src="https://img.freepik.com/premium-vector/black-friday-instagram-post-template-square-banner-gadget-sale_155157-248.jpg?size=338&ext=jpg&ga=GA1.2.1741606185.1694412509&semt=ais" alt="">
+</figure>
+<figure>
+    <figcaption>20% OFF</figcaption>            
+    <img src="https://img.freepik.com/premium-vector/laptop-gadget-sale-social-media-instagram-post-banner-template_188201-98.jpg?size=338&ext=jpg&ga=GA1.2.1741606185.1694412509&semt=ais" alt="">
+</figure>
+<figure>
+    <figcaption>10% OFF</figcaption>            
+    <img src="https://img.freepik.com/premium-psd/limited-offer-12-12-sale-social-media-post-template_122059-1021.jpg?size=338&ext=jpg&ga=GA1.2.1741606185.1694412509&semt=ais" alt="">
+</figure>
+</div>
+<br><br>
+
+</div>
+<div id="ccc">
+    <h1 style="text-align: center;">HEADPHONES OFFERS</h1>
+        <hr>
+    <div id="heoff">
+        <figure>
+            <figcaption>80% OFF</figcaption>            
+            <img src="https://img.freepik.com/premium-psd/headphone-brand-product-social-media-instagram-banner_505751-2765.jpg?size=338&ext=jpg&ga=GA1.1.1741606185.1694412509&semt=ais" alt="">
+        </figure>
+        <figure>
+            <figcaption>90% OFF</figcaption>            
+            <img src="https://img.freepik.com/premium-psd/headphone-square-social-media-post-banner-template_220159-86.jpg?size=338&ext=jpg&ga=GA1.1.1741606185.1694412509&semt=ais" alt="">
+        </figure>
+        <figure>
+            <figcaption>100% OFF</figcaption>            
+            <img src="https://img.freepik.com/premium-psd/headphone-brand-product-social-media-instagram-banner_505751-2768.jpg?size=338&ext=jpg&ga=GA1.1.1741606185.1694412509&semt=ais" alt="">
+        </figure>
+        <figure>
+            <figcaption>50% OFF</figcaption>            
+            <img src="https://img.freepik.com/premium-vector/banner-design-headphone-just-listen-feel-beat-template_262129-15944.jpg?size=338&ext=jpg&ga=GA1.1.1741606185.1694412509&semt=ais" alt="">
+        </figure>
+        <figure>
+            <figcaption>70% OFF</figcaption>            
+            <img src="https://img.freepik.com/premium-psd/headphone-sale-social-media-post-instagram-post_601103-268.jpg?size=338&ext=jpg&ga=GA1.1.1741606185.1694412509&semt=ais" alt="">
+        </figure>
+        <figure>
+            <figcaption>80% OFF</figcaption>            
+            <img src="https://img.freepik.com/premium-psd/web-banner-social-media-post-ecommerce-sale_601103-315.jpg?size=338&ext=jpg&ga=GA1.1.1741606185.1694412509&semt=ais" alt="">
+        </figure>
+        <figure>
+            <figcaption>40% OFF</figcaption>            
+            <img src="https://img.freepik.com/premium-psd/headphone-brand-product-social-media-instagram-banner_505751-2758.jpg?size=338&ext=jpg&ga=GA1.1.1741606185.1694412509&semt=ais" alt="">
+        </figure>
+        <figure>
+            <figcaption>20% OFF</figcaption>            
+            <img src="https://img.freepik.com/premium-psd/headphone-brand-product-social-media-instagram-banner_505751-2759.jpg?size=338&ext=jpg&ga=GA1.1.1741606185.1694412509&semt=ais" alt="">
+        </figure>
+        <figure>
+            <figcaption>10% OFF</figcaption>            
+            <img src="https://img.freepik.com/premium-psd/social-media-promotional-ads-banner-psd-templates-design_565439-328.jpg?size=338&ext=jpg&ga=GA1.1.1741606185.1694412509&semt=ais" alt="">
+        </figure>
+        <figure>
+            <figcaption>50% OFF</figcaption>            
+            <img src="https://img.freepik.com/premium-psd/headphone-brand-product-social-media-instagram-banner_505751-2770.jpg?size=338&ext=jpg&ga=GA1.1.1741606185.1694412509&semt=ais" alt="">
+        </figure>
+        <figure>
+            <figcaption>20% OFF</figcaption>            
+            <img src="https://img.freepik.com/premium-psd/headphone-brand-product-social-media-instagram-banner_505751-2760.jpg?size=338&ext=jpg&ga=GA1.1.1741606185.1694412509&semt=ais" alt="">
+        </figure>
+        <figure>
+            <figcaption>40% OFF</figcaption>            
+            <img src="https://img.freepik.com/premium-psd/headphone-brand-product-social-media-instagram-banner_505751-2757.jpg?size=338&ext=jpg&ga=GA1.1.1741606185.1694412509&semt=ais" alt="">
+        </figure>
+    </div>
+<br><br>
+</div>
+    
+<div style="z-index: -1;" id="carouselExampleInterval1" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-inner">
+        
+       <div class="carousel-item" data-bs-interval="5000">
+        <img  src="https://img.freepik.com/premium-psd/social-media-banner-design-with-3d-rendering-shopping-instrument_351527-1226.jpg?size=626&ext=jpg&ga=GA1.1.1741606185.1694412509&semt=ais"  alt="...">
+      </div>
+      <div class="carousel-item" data-bs-interval="5000">
+        <img  src="https://img.freepik.com/premium-psd/online-sale-banner-design-black-friday-3d-rendered_351527-1222.jpg?size=626&ext=jpg&ga=GA1.1.1741606185.1694412509&semt=ais"  alt="...">
+      </div>
+      <div class="carousel-item active" data-bs-interval="5000">
+        <img  src="https://img.freepik.com/premium-psd/banner-brazilian-week-3d-render-marketing-campaign-template-design-portuguese_363450-1466.jpg?size=626&ext=jpg&ga=GA1.2.1741606185.1694412509&semt=ais"  alt="...">
+      </div>
+      <div class="carousel-item" data-bs-interval="5000">
+        <img  src="https://img.freepik.com/premium-psd/fashion-special-discount-offer-3d-banner-template_351527-1246.jpg?size=626&ext=jpg&ga=GA1.2.1741606185.1694412509&semt=ais"  alt="...">
+      </div>
+      <div class="carousel-item" data-bs-interval="5000">
+        <img  src="https://img.freepik.com/premium-vector/sale-banner-template-design-with-geometric-background-big-sale-special-offer-up-80-off-super-sale-end-season-special-offer-banner-vector-illustration_2307-607.jpg?size=626&ext=jpg&ga=GA1.1.1741606185.1694412509&semt=ais"  alt="...">
+      </div>
+      
+      
+    </div> 
+    <!--
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>-->
+  </div>
+    <div id="h1">
+    <div id="ind">
+        
+        <figure>
+            <img src="https://m.media-amazon.com/images/I/71ZXHg7Oh6L._AC_UY218_.jpg" alt="">     
+            <figcaption>SAMSUNG GALAXY S23</figcaption>
+            <p class="rat"><span class="rating">4.4&#9733</span>(12,345)</p>
+            <h5 style="font-size: 14px;" class="rate">₹93,000 <del>₹100000 </del> <span class="off"> 8%%off</span></h5>
+            <button class="imgbut" onclick="ordered('SAMSUNG GALAXY S23',93000)">ADD CART</button>
+        </figure>
+        
+        <figure>
+            <img src="https://m.media-amazon.com/images/I/61hrvDfFNtL._AC_UY218_.jpg" alt="">     
+            <figcaption>SAMSUNG GALAXY A14</figcaption>
+            <p class="rat"><span class="rating">4.8&#9733</span>(12,345)</p>
+            <h5 style="font-size: 14px;" class="rate">₹45,000 <del>₹50000 </del> <span class="off"> 10%off</span></h5>
+            <button class="imgbut" onclick="ordered('SAMSUNG GALAXY A14',45000)">ADD CART</button>
+        </figure>
+
+       <figure>
+            <img src="https://m.media-amazon.com/images/I/61MEp5HIdBL._AC_UY218_.jpg" alt="">
+            <figcaption>SAMSUNG GALAXY A54</figcaption>
+            <p class="rat"><span class="rating">4.2&#9733</span>(12,345)</p>
+            <h5 style="font-size: 14px;" class="rate">₹82,000 <del>₹90000 </del> <span class="off"> 9.4%off</span></h5>
+            <button class="imgbut" onclick="ordered('SAMSUNG GALAXY A54',82000)">ADD CART</button>
+        </figure>
+
+        <figure>    
+            <img src="https://m.media-amazon.com/images/I/51ExLzIc3sL._AC_UY218_.jpg" alt="">     
+            <figcaption>SAMSUNG GALAXY A34</figcaption>
+            <p class="rat"><span class="rating">4.0&#9733</span>(12,345)</p>
+            <h5 style="font-size: 14px;" class="rate">₹44,000 <del>₹80000 </del> <span class="off"> 45%off</span></h5>
+            <button class="imgbut" onclick="ordered('SAMSUNG GALAXY A34',44000)">ADD CART</button>
+        </figure>
+
+        <figure>
+            <img src="https://m.media-amazon.com/images/I/31lRhoqdT7L._AC_UY218_.jpg" alt="">     
+            <figcaption>SAMSUNG GALAXY A24</figcaption>
+            <p class="rat"><span class="rating">4.3&#9733</span>(12,375)</p>
+            <h5 style="font-size: 14px;" class="rate">₹19,000 <del>₹25000 </del> <span class="off"> 23%off</span></h5>
+            <button class="imgbut" onclick="ordered('SAMSUNG GALAXY A24',19000)">ADD CART</button>
+        </figure>
+
+        <figure>
+            <img src="https://m.media-amazon.com/images/I/61IqkfGCw5L._AC_UY218_.jpg" alt="">     
+            <figcaption>SAMSUNG GALAXY Z Flip</figcaption>
+            <p class="rat"><span class="rating">4.8&#9733</span>(12,786)</p>
+            <h5 style="font-size: 14px;" class="rate">₹80,000 <del>₹100000 </del> <span class="off"> 20%off</span></h5>
+            <button class="imgbut" onclick="ordered('SAMSUNG GALAXY Z Flip',80000)">ADD CART</button>
+        </figure>
+
+      
+        <figure>
+            <img src="https://m.media-amazon.com/images/I/81LrmorQeQL._AC_UY218_.jpg" alt="">     
+            <figcaption>Oppo A78 5G(4GB-128GB)</figcaption>
+            <p class="rat"><span class="rating">4.8&#9733</span>(99,345)</p>
+            <h5 style="font-size: 14px;" class="rate">₹22,000 <del>₹33000 </del> <span class="off"> 33%off</span></h5>
+            <button class="imgbut" onclick="ordered('Oppo A78 5G',22000)">ADD CART</button>
+        </figure>
+
+        <figure>
+            <img src="https://m.media-amazon.com/images/I/61BGE6iu4AL._AC_UY218_.jpg" alt="">     
+            <figcaption>Apple Iphone 14 Plus</figcaption>
+            <p class="rat"><span class="rating">4.2&#9733</span>(5,345)</p>
+            <h5 style="font-size: 14px;" class="rate">₹125,000 <del>₹150000 </del> <span class="off"> 30%off</span></h5>
+            <button class="imgbut" onclick="ordered('Apple Iphone 14 Plus',12500)">ADD CART</button>
+        </figure>
+
+        <figure>
+            <img src="https://m.media-amazon.com/images/I/610pghkO81L._AC_UY218_.jpg" alt="">     
+            <figcaption>Apple Iphone 14 Pro</figcaption>
+            <p class="rat"><span class="rating">4.3&#9733</span>(75,345)</p>
+            <h5 style="font-size: 14px;" class="rate">₹100,000 <del>₹125000 </del> <span class="off"> 25%off</span></h5>
+            <button class="imgbut" onclick="ordered('Apple Iphone 14 Pro',100000)">ADD CART</button>
+        </figure>
+
+        <figure>
+            <img src="https://m.media-amazon.com/images/I/61A0Zu4K-TL._AC_UY218_.jpg" alt="">     
+            <figcaption>Apple Iphone SE(4GB-128GB)</figcaption>
+            <p class="rat"><span class="rating">4.8&#9733</span>(52,345)</p>
+            <h5 style="font-size: 14px;" class="rate">₹70,000 <del>₹100000 </del> <span class="off"> 30%off</span></h5>
+            <button class="imgbut" onclick="ordered('Apple Iphone SE',70000)">ADD CART</button>
+        </figure>
+
+        <figure>
+            <img src="https://m.media-amazon.com/images/I/61-r9zOKBCL._AC_UY218_.jpg" alt="">     
+            <figcaption>Apple Iphone 13(4GB-128GB)</figcaption>
+            <p class="rat"><span class="rating">4.5&#9733</span>(10,345)</p>
+            <h5 style="font-size: 14px;" class="rate">₹80,000 <del>₹160000 </del> <span class="off"> 50%off</span></h5>
+            <button class="imgbut" onclick="ordered('Apple Iphone 13',80000)">ADD CART</button>
+        </figure>
+
+        <figure>
+            <img src="https://m.media-amazon.com/images/I/61bK6PMOC3L._AC_UY218_.jpg" alt="">     
+            <figcaption>Apple Iphone 14(4GB-128GB)</figcaption>
+            <p class="rat"><span class="rating">4.9&#9733</span>(1,345)</p>
+            <h5 style="font-size: 14px;" class="rate">₹75,000 <del>₹100000 </del> <span class="off"> 25%off</span></h5>
+            <button class="imgbut" onclick="ordered('Apple Iphone 14',75000)">ADD CART</button>
+        </figure>
+        <figure>
+            <img src="https://m.media-amazon.com/images/I/71UHrexGN5L._AC_UY218_.jpg" alt="">     
+            <figcaption>REDMI 9A(4GB-128GB)</figcaption>
+            <p class="rat"><span class="rating">4.4&#9733</span>(12,467)</p>
+            <h5 style="font-size: 14px;" class="rate">₹15,000 <del>₹30000 </del> <span class="off"> 50%off</span></h5>
+            <button class="imgbut" onclick="ordered('REDMI 9A',15000)">ADD CART</button>
+        </figure>
+
+        <figure>
+            <img src="https://m.media-amazon.com/images/I/61brUtKPajL._AC_UY218_.jpg" alt="">     
+            <figcaption>REDMI NOTE 12 4G</figcaption>
+            <p class="rat"><span class="rating">3.9&#9733</span>(12,445)</p>
+            <h5 style="font-size: 14px;" class="rate">₹15,000 <del>₹25000 </del> <span class="off"> 40%off</span></h5>
+            <button class="imgbut" onclick="ordered('REDMI NOTE 12 4G',15000)">ADD CART</button>
+        </figure>
+
+        <figure>
+            <img src="https://m.media-amazon.com/images/I/61PPGiFRDML._AC_UY218_.jpg" alt="">     
+            <figcaption>REDMI 9 C(4GB-128GB)</figcaption>
+            <p class="rat"><span class="rating">4.0&#9733</span>(12,976)</p>
+            <h5 style="font-size: 14px;" class="rate">₹9,000 <del>₹24000 </del> <span class="off"> 25%off</span></h5>
+            <button class="imgbut" onclick="ordered('REDMI 9 C',9000)">ADD CART</button>
+        </figure>
+
+        <figure>
+            <img src="https://m.media-amazon.com/images/I/51oW-QOqhaL._AC_UY218_.jpg" alt="">     
+            <figcaption>VIVO iQOO Z7s 5G(4GB-128GB)</figcaption>
+            <p class="rat"><span class="rating">4.9&#9733</span>(72,345)</p>
+            <h5 style="font-size: 14px;" class="rate">₹25,000 <del>₹40000 </del> <span class="off"> 40%off</span></h5>
+            <button class="imgbut" onclick="ordered('VIVO iQOO Z7s 5G',25000)">ADD CART</button>
+        </figure>
+    
+        <figure>
+            <img src="https://m.media-amazon.com/images/I/61gdyDHr9ZL._AC_UY218_.jpg" alt="">     
+            <figcaption>Vivo Y27(4GB-128GB)</figcaption>
+            <p class="rat"><span class="rating">4.8&#9733</span>(19,375)</p>
+            <h5 style="font-size: 14px;" class="rate">₹8,000 <del>₹25000 </del> <span class="off"> 74%off</span></h5>
+            <button class="imgbut" onclick="ordered('Vivo Y27',8000)">ADD CART</button>
+        </figure>
+
+        <figure>
+            <img src="https://m.media-amazon.com/images/I/81t-iyg0JfL._AC_UY218_.jpg" alt="">     
+            <figcaption>Oppo F23 5G(4GB-128GB)</figcaption>
+            <p class="rat"><span class="rating">4.8&#9733</span>(19,845)</p>
+            <h5 style="font-size: 14px;" class="rate">₹18,000 <del>₹24000 </del> <span class="off"> 33%off</span></h5>
+            <button class="imgbut" onclick="ordered('Oppo F23 5G',18000)">ADD CART</button>
+        </figure>
+
+<!--LAPTOPS-->
+<figure>
+    <img class="lapimg" src="https://m.media-amazon.com/images/I/51DmOWr3rnL._AC_UL320_.jpg" alt="">     
+    <figcaption>ASUS Vivobook S 15 OLED (2023)</figcaption>
+    <p class="rat"><span class="rating">4.9&#9733</span>(12,745)</p>
+    <h5 style="font-size: 14px;" class="rate">₹40,000 <del>₹80000 </del> <span class="off"> 50%off</span></h5>
+    <button class="imgbut" onclick="ordered('ASUS Vivobook S 15 OLED',40000)">ADD CART</button>
+</figure>
+<figure>
+    <img class="lapimg" src="https://m.media-amazon.com/images/I/71hbhqTUnAL._AC_UL320_.jpg" alt="">     
+    <figcaption>HP Pavilion Gaming 11th Gen </figcaption>
+    <p class="rat"><span class="rating">4.3&#9733</span>(12,367)</p>
+    <h5 style="font-size: 14px;" class="rate">₹44,000 <del>₹80000 </del> <span class="off"> 45%off</span></h5>
+    <button class="imgbut" onclick="ordered('HP Pavilion Gaming 11th Gen',44000)">ADD CART</button>
+</figure>
+<figure>
+    <img class="lapimg" src="https://m.media-amazon.com/images/I/710X-ZF2RDL._AC_UL320_.jpg" alt="">     
+    <figcaption>ASUS Vivobook 15 (2023)</figcaption>
+    <p class="rat"><span class="rating">4.1&#9733</span>(12,356)</p>
+    <h5 style="font-size: 14px;" class="rate">₹85,000 <del>₹120000 </del> <span class="off"> 24%off</span></h5>
+    <button class="imgbut" onclick="ordered('ASUS Vivobook 15',85000)">ADD CART</button>
+</figure>
+<figure>
+    <img class="lapimg"  src="https://m.media-amazon.com/images/I/71kRuqzdLML._AC_UL320_.jpg" alt="">     
+    <figcaption>ASUS Vivobook S15 OLED 2022</figcaption>
+    <p class="rat"><span class="rating">4.2&#9733</span>(52,345)</p>
+    <h5 style="font-size: 14px;" class="rate">₹25,000 <del>₹50000 </del> <span class="off"> 50%off</span></h5>
+    <button class="imgbut" onclick="ordered('ASUS Vivobook S15',25000)">ADD CART</button>
+</figure>
+<figure>
+    <img class="lapimg"  src="https://m.media-amazon.com/images/I/71dAYFhRTcL._AC_UY218_.jpg" alt="">     
+    <figcaption>ASUS Vivobook 15 laptop</figcaption>
+    <p class="rat"><span class="rating">4.2&#9733</span>(55,345)</p>
+    <h5 style="font-size: 14px;" class="rate">₹18,000 <del>₹24000 </del> <span class="off"> 33%off</span></h5>
+    <button class="imgbut" onclick="ordered('ASUS Vivobook 15',18000)">ADD CART</button>
+</figure>
+<figure>
+    <img class="lapimg"  src="https://m.media-amazon.com/images/I/51cVJdMGznL._AC_UY218_.jpg" alt="">     
+    <figcaption>Lenovo IdeaPad Slim Laptop</figcaption>
+    <p class="rat"><span class="rating">4.7&#9733</span>(17,322)</p>
+    <h5 style="font-size: 14px;" class="rate">₹24,000 <del>₹30000 </del> <span class="off"> 20%off</span></h5>
+    <button class="imgbut" onclick="ordered('Lenovo IdeaPad',24000)">ADD CART</button>
+</figure>
+<figure>
+    <img class="lapimg"  src="https://m.media-amazon.com/images/I/71czGb00k5L._AC_UY218_.jpg" alt="">     
+    <figcaption>Acer Aspire Lite 11th Gen </figcaption>
+    <p class="rat"><span class="rating">4.3&#9733</span>(12,985)</p>
+    <h5 style="font-size: 14px;" class="rate">₹70,000 <del>₹100000 </del> <span class="off"> 30%off</span></h5>
+    <button class="imgbut" onclick="ordered('Acer Aspire',70000)">ADD CART</button>
+</figure>
+<figure>
+    <img class="lapimg"  src="https://m.media-amazon.com/images/I/71Blj59DzzL._AC_UY218_.jpg" alt="">     
+    <figcaption>HP Laptop 15s, 12th Gen </figcaption>
+    <p class="rat"><span class="rating">4.7&#9733</span>(12,123)</p>
+    <h5 style="font-size: 14px;" class="rate">₹44,000 <del>₹50000 </del> <span class="off"> 21%off</span></h5>
+    <button class="imgbut" onclick="ordered('HP Laptop 15s',44000)">ADD CART</button>
+</figure>
+<figure>
+    <img class="lapimg" src="https://m.media-amazon.com/images/I/71czGb00k5L._AC_UY218_.jpg" alt="">     
+    <figcaption>Acer Aspire Lite AMD Ryzen</figcaption>
+    <p class="rat"><span class="rating">4.1&#9733</span>(12,974)</p>
+    <h5 style="font-size: 14px;" class="rate">₹15,000 <del>₹30000 </del> <span class="off"> 50%off</span></h5>
+    <button class="imgbut" onclick="ordered('Acer Aspire Lite',15000)">ADD CART</button>
+</figure>
+<figure>
+    <img class="lapimg"  src="https://m.media-amazon.com/images/I/81SCRIobVAL._AC_UY218_.jpg" alt="">     
+    <figcaption>HP Laptop 15s, AMD Ryzen</figcaption>
+    <p class="rat"><span class="rating">4.6&#9733</span>(12,675)</p>
+    <h5 style="font-size: 14px;" class="rate">₹19,000 <del>₹25000 </del> <span class="off"> 23%off</span></h5>
+    <button class="imgbut" onclick="ordered('HP Laptop 15s',19000)">ADD CART</button>
+</figure>
+<figure>
+    <img class="lapimg"  src="https://m.media-amazon.com/images/I/71czGb00k5L._AC_UY218_.jpg" alt="">     
+    <figcaption>Acer Aspire Lite AMD Ryzen</figcaption>
+    <p class="rat"><span class="rating">4.0&#9733</span>(12,345)</p>
+    <h5 style="font-size: 14px;" class="rate">₹45,000 <del>₹50000 </del> <span class="off"> 10%off</span></h5>
+    <button class="imgbut" onclick="ordered('Acer Aspire Lite',45000)">ADD CART</button>
+</figure>
+<figure>
+    <img class="lapimg"  src="https://m.media-amazon.com/images/I/61eTPcEsC+L._AC_UY218_.jpg" alt="">     
+    <figcaption>ASUS Vivobook Pro 15</figcaption>
+    <p class="rat"><span class="rating">4.5&#9733</span>(12,345)</p>
+    <h5 style="font-size: 14px;" class="rate">₹25,000 <del>₹75000 </del> <span class="off"> 33%off</span></h5>
+    <button class="imgbut" onclick="ordered('ASUS Vivobook Pro 15',25000)">ADD CART</button>
+</figure>
+<figure>
+    <img class="lapimg"  src="https://m.media-amazon.com/images/I/71--IQUHVwL._AC_UY218_.jpg" alt="">     
+    <figcaption>Lenov IdeaPad Gaming 3  </figcaption>
+    <p class="rat"><span class="rating">4.3&#9733</span>(12,345)</p>
+    <h5 style="font-size: 14px;" class="rate">₹24,000 <del>₹30000 </del> <span class="off"> 20%off</span></h5>
+    <button class="imgbut" onclick="ordered('Lenov IdeaPad ',24000)">ADD CART</button>
+</figure>
+<figure>
+    <img  class="lapimg" src="https://m.media-amazon.com/images/I/61xzutxSl8L._AC_UY218_.jpg" alt="">     
+    <figcaption>Acer Aspire 5 Gaming Laptop</figcaption>
+    <p class="rat"><span class="rating">4.2&#9733</span>(12,345)</p>
+    <h5 style="font-size: 14px;" class="rate">₹12,000 <del>₹20000 </del> <span class="off"> 40%off</span></h5>
+    <button class="imgbut" onclick="ordered('Acer Aspire 5',12000)">ADD CART</button>
+</figure>
+<figure>
+    <img  class="lapimg" src="https://m.media-amazon.com/images/I/71Dh450OVpL._AC_UY218_.jpg" alt="">     
+    <figcaption>Samsung Galaxy Book3 Pro </figcaption>
+    <p class="rat"><span class="rating">4.9&#9733</span>(12,365)</p>
+    <h5 style="font-size: 14px;" class="rate">₹45,000 <del>₹60000 </del> <span class="off"> 25%off</span></h5>
+    <button class="imgbut" onclick="ordered('Samsung Galaxy Book3 Pro ',45000)">ADD CART</button>
+</figure>
+<figure>
+    <img  class="lapimg" src="https://m.media-amazon.com/images/I/71NjNYTRy3L._AC_UY218_.jpg" alt="">     
+    <figcaption>Samsung Galaxy Book3 360</figcaption>
+    <p class="rat"><span class="rating">4.3&#9733</span>(12,345)</p>
+    <h5 style="font-size: 14px;" class="rate">₹30,000 <del>₹60000 </del> <span class="off"> 50%off</span></h5>
+    <button class="imgbut" onclick="ordered('Samsung Galaxy Book3 360',30000)">ADD CART</button>
+</figure>
+<figure>
+    <img class="lapimg"  src="https://m.media-amazon.com/images/I/71jG+e7roXL._AC_UY218_.jpg" alt="">     
+    <figcaption>Apple MacBook Air Laptop M1</figcaption>
+    <p class="rat"><span class="rating">4.3&#9733</span>(12,345)</p>
+    <h5 style="font-size: 14px;" class="rate">₹75,000 <del>₹100000 </del> <span class="off"> 25%off</span></h5>
+    <button class="imgbut" onclick="ordered('Apple MacBook',75000)">ADD CART</button>
+</figure>
+<figure>
+    <img class="lapimg"  src="https://m.media-amazon.com/images/I/71f5Eu5lJSL._AC_UY218_.jpg" alt="">     
+    <figcaption>Apple 2022 MacBook Laptop</figcaption>
+    <p class="rat"><span class="rating">4.3&#9733</span>(12,345)</p>
+    <h5 style="font-size: 14px;" class="rate">₹90,000 <del>₹100000 </del> <span class="off"> 10%off</span></h5>
+    <button class="imgbut" onclick="ordered('Apple 2022 MacBook',90000)">ADD CART</button>
+</figure>
+
+<!--HEADPHONES-->
+<figure>
+    <img class="HEAimg"  src="https://m.media-amazon.com/images/I/61Do8AYjxnL._AC_UY218_.jpg" alt="">     
+    <figcaption>Srhythm Wireless Headphones</figcaption>
+    <p class="rat"><span class="rating">4.5&#9733</span>(5345)</p>
+    <h5 style="font-size: 14px;" class="rate">₹1800 <del>₹6000 </del> <span class="off"> 60%off</span></h5>
+    <button class="imgbut" onclick="ordered('Srhythm Wireless Headphones',1800)">ADD CART</button>
+</figure>
+
+<figure>
+    <img class="HEAimg"  src="https://m.media-amazon.com/images/I/51F70dMzS1L._AC_UY218_.jpg" alt="">     
+    <figcaption>pTron Bassbuds  558 Bluetooth</figcaption>
+    <p class="rat"><span class="rating">4.1&#9733</span>(12,397)</p>
+    <h5 style="font-size: 14px;" class="rate">₹2,000 <del>₹8000 </del> <span class="off"> 25%off</span></h5>
+    <button class="imgbut" onclick="ordered('pTron Bassbuds 558',2000)">ADD CART</button>
+</figure>
+
+<figure>
+    <img class="HEAimg"  src="https://m.media-amazon.com/images/I/61L4SkS7w2L._AC_UY218_.jpg" alt="">     
+    <figcaption>boAt Rockerz 558 Bluetooth</figcaption>
+    <p class="rat"><span class="rating">4.9&#9733</span>(56,345)</p>
+    <h5 style="font-size: 14px;" class="rate">₹1500 <del>₹3000 </del> <span class="off"> 50%off</span></h5>
+    <button class="imgbut" onclick="ordered('boAt Rockerz 558',1500)">ADD CART</button>
+</figure>
+<figure>
+    <img class="HEAimg"  src="https://m.media-amazon.com/images/I/716Il5U5F4L._AC_UY218_.jpg" alt="">     
+    <figcaption>Infinity - JBL Tranz 710</figcaption>
+    <p class="rat"><span class="rating">4.3&#9733</span>(9,345)</p>
+    <h5 style="font-size: 14px;" class="rate">₹19,000 <del>₹25000 </del> <span class="off"> 23%off</span></h5>
+    <button class="imgbut" onclick="ordered('Infinity-JBL Tranz 710',19000)">ADD CART</button>
+</figure>
+
+<figure>
+    <img class="HEAimg"  src="https://m.media-amazon.com/images/I/51xxA+6E+xL._AC_UY218_.jpg" alt="">     
+    <figcaption>boAt Rockerz 450 Bluetooth</figcaption>
+    <p class="rat"><span class="rating">4.3&#9733</span>(7,345)</p>
+    <h5 style="font-size: 14px;" class="rate">₹3,000 <del>₹6000 </del> <span class="off"> 50%off</span></h5>
+    <button class="imgbut" onclick="ordered('boAt Rockerz 450',3000)">ADD CART</button>
+</figure>
+<figure>
+    <img class="HEAimg"  src="https://m.media-amazon.com/images/I/719elVA3FvL._AC_UY218_.jpg" alt="">     
+    <figcaption>boAt BassHeads 100 </figcaption>
+    <p class="rat"><span class="rating">4.3&#9733</span>(3,345)</p>
+    <h5 style="font-size: 14px;" class="rate">₹100 <del>₹500 </del> <span class="off"> 80%off</span></h5>
+    <button class="imgbut" onclick="ordered('boAt BassHeads 100',100)">ADD CART</button>
+</figure>
+<figure>
+    <img class="HEAimg"  src="https://m.media-amazon.com/images/I/51+r7d3OqaL._AC_UY218_.jpg" alt="">     
+    <figcaption>PTron Tangent Sports</figcaption>
+    <p class="rat"><span class="rating">4.3&#9733</span>(9,345)</p>
+    <h5 style="font-size: 14px;" class="rate">₹5,000 <del>₹25000 </del> <span class="off"> 80%off</span></h5>
+    <button class="imgbut" onclick="ordered('PTron Tangent Sports',5000)">ADD CART</button>
+</figure>
+<figure>
+    <img class="HEAimg"  src="https://m.media-amazon.com/images/I/61nerorzssL._AC_UY218_.jpg" alt="">     
+    <figcaption>boAt Bassheads 162 </figcaption>
+    <p class="rat"><span class="rating">4.3&#9733</span>(8,345)</p>
+    <h5 style="font-size: 14px;" class="rate">₹150 <del>₹300 </del> <span class="off"> 50%off</span></h5>
+    <button class="imgbut" onclick="ordered('boAt Bassheads 162',150)">ADD CART</button>
+</figure>
+<figure>
+    <img class="HEAimg"  src="https://m.media-amazon.com/images/I/61jFYObJsvL._AC_UY218_.jpg" alt="">     
+    <figcaption>  beatXP Marv Neo 1.85 </figcaption>
+    <p class="rat"><span class="rating">4.3&#9733</span>(5,345)</p>
+    <h5 style="font-size: 14px;" class="rate">₹2,000 <del>₹10000 </del> <span class="off"> 80%off</span></h5>
+    <button class="imgbut" onclick="ordered('beatXP Marv Neo',2000)">ADD CART</button>
+</figure>
+<figure>
+    <img class="HEAimg"  src="https://m.media-amazon.com/images/I/61V4qp8voWL._AC_UY218_.jpg" alt="">     
+    <figcaption>Amazfit Bip 5 Smart Watch</figcaption>
+    <p class="rat"><span class="rating">4.3&#9733</span>(4,345)</p>
+    <h5 style="font-size: 14px;" class="rate">₹5,000 <del>₹15000 </del> <span class="off"> 33%off</span></h5>
+    <button class="imgbut" onclick="ordered('Amazfit Bip 5 Smart Watch',5000)">ADD CART</button>
+</figure>
+<figure>
+    <img class="HEAimg"  src="https://m.media-amazon.com/images/I/618fpS1lonL._AC_UY218_.jpg" alt="">     
+    <figcaption>boAt Wave Style Smart Watch </figcaption>
+    <p class="rat"><span class="rating">4.2&#9733</span>(12,345)</p>
+    <h5 style="font-size: 14px;" class="rate">₹19,000 <del>₹25000 </del> <span class="off"> 23%off</span></h5>
+    <button class="imgbut" onclick="ordered('boAt Wave Style Smart Watch',19000)">ADD CART</button>
+</figure>
+<figure>
+    <img class="HEAimg"  src="https://m.media-amazon.com/images/I/71Yro+y7CQL._AC_UY218_.jpg" alt="">     
+    <figcaption>boAt Wave Sigma Smart Watch</figcaption>
+    <p class="rat"><span class="rating">4.3&#9733</span>(54,345)</p>
+    <h5 style="font-size: 14px;" class="rate">₹6,000 <del>₹18000 </del> <span class="off"> 33%off</span></h5>
+    <button class="imgbut" onclick="ordered('boAt Wave Style Smart Watch',6000)">ADD CART</button>
+</figure>
+<figure>
+    <img class="HEAimg"  src="https://m.media-amazon.com/images/I/71JDQUUv1tL._AC_UY218_.jpg" alt="">     
+    <figcaption>Fire-Boltt Phoenix Pro 1.39" </figcaption>
+    <p class="rat"><span class="rating">4.3&#9733</span>(12,345)</p>
+    <h5 style="font-size: 14px;" class="rate">₹4,000 <del>₹8000 </del> <span class="off"> 50%off</span></h5>
+    <button class="imgbut" onclick="ordered('Fire-Boltt Phoenix Pro',4000)">ADD CART</button>
+</figure>
+<figure>
+    <img class="HEAimg"  src="https://m.media-amazon.com/images/I/61SSVxTSs3L._AC_UY218_.jpg" alt="">     
+    <figcaption>Fire-Boltt Phoenix Ultra Luxury </figcaption>
+    <p class="rat"><span class="rating">4.3&#9733</span>(12,345)</p>
+    <h5 style="font-size: 14px;" class="rate">₹15,000 <del>₹30000 </del> <span class="off"> 50%off</span></h5>
+    <button class="imgbut" onclick="ordered('Fire-Boltt Phoenix Ultra Luxury',15000)">ADD CART</button>
+</figure>
+<figure>
+    <img class="HEAimg"  src="https://m.media-amazon.com/images/I/61wFPVRF2TL._AC_UY218_.jpg" alt="">     
+    <figcaption>Amazon Basics 35W Wall Charger</figcaption>
+    <p class="rat"><span class="rating">4.3&#9733</span>(12,345)</p>
+    <h5 style="font-size: 14px;" class="rate">₹1,000 <del>₹2000 </del> <span class="off"> 50%off</span></h5>
+    <button class="imgbut" onclick="ordered('Amazon Basics 35W',1000)">ADD CART</button>
+</figure>
+<figure>
+    <img class="HEAimg"  src="https://m.media-amazon.com/images/I/619pp546sKL._AC_UY218_.jpg" alt="">     
+    <figcaption>DR VAKU® 20W Type C Adapter</figcaption>
+    <p class="rat"><span class="rating">4.3&#9733</span>(12,345)</p>
+    <h5 style="font-size: 14px;" class="rate">₹1500 <del>₹2000 </del> <span class="off"> 25%off</span></h5>
+    <button class="imgbut" onclick="ordered('DR VAKU® 20W Type C',1500)">ADD CART</button>
+</figure>
+<figure>
+    <img class="HEAimg"  src="https://m.media-amazon.com/images/I/418Me4xUrkL._AC_UY218_.jpg" alt="">     
+    <figcaption>Mi 5V Charger|10W Wall</figcaption>
+    <p class="rat"><span class="rating">4.3&#9733</span>(12,345)</p>
+    <h5 style="font-size: 14px;" class="rate">₹2500 <del>₹5000 </del> <span class="off"> 50%off</span></h5>
+    <button class="imgbut" onclick="ordered('Mi 5V Charger',2500)">ADD CART</button>
+</figure>
+<figure>
+    <img class="HEAimg"  src="https://m.media-amazon.com/images/I/51PU2R0hdXL._AC_UY218_.jpg" alt="">     
+    <figcaption>Duracell 20 Watts Fast Wall Charger</figcaption>
+    <p class="rat"><span class="rating">4.3&#9733</span>(12,345)</p>
+    <h5 style="font-size: 14px;" class="rate">₹500 <del>₹2000 </del> <span class="off"> 75%off</span></h5>
+    <button class="imgbut" onclick="ordered('Duracell 20 Watts',500)">ADD CART</button>
+</figure>
+</div>
+<!--gadddd-->
+<div id="gad" style="display: none;">
+<figure>
+    <img class="HEAimg"  src="https://m.media-amazon.com/images/I/61Do8AYjxnL._AC_UY218_.jpg" alt="">     
+    <figcaption>Srhythm Wireless Headphones</figcaption>
+    <p class="rat"><span class="rating">4.5&#9733</span>(5345)</p>
+    <h5 style="font-size: 14px;" class="rate">₹1800 <del>₹6000 </del> <span class="off"> 60%off</span></h5>
+    <button class="imgbut" onclick="ordered('Srhythm Wireless Headphones',1800)">ADD CART</button>
+</figure>
+
+<figure>
+    <img class="HEAimg"  src="https://m.media-amazon.com/images/I/51F70dMzS1L._AC_UY218_.jpg" alt="">     
+    <figcaption>pTron Bassbuds  558 Bluetooth</figcaption>
+    <p class="rat"><span class="rating">4.1&#9733</span>(12,397)</p>
+    <h5 style="font-size: 14px;" class="rate">₹2,000 <del>₹8000 </del> <span class="off"> 25%off</span></h5>
+    <button class="imgbut" onclick="ordered('pTron Bassbuds 558',2000)">ADD CART</button>
+</figure>
+
+<figure>
+    <img class="HEAimg"  src="https://m.media-amazon.com/images/I/61L4SkS7w2L._AC_UY218_.jpg" alt="">     
+    <figcaption>boAt Rockerz 558 Bluetooth</figcaption>
+    <p class="rat"><span class="rating">4.9&#9733</span>(56,345)</p>
+    <h5 style="font-size: 14px;" class="rate">₹1500 <del>₹3000 </del> <span class="off"> 50%off</span></h5>
+    <button class="imgbut" onclick="ordered('boAt Rockerz 558',1500)">ADD CART</button>
+</figure>
+<figure>
+    <img class="HEAimg"  src="https://m.media-amazon.com/images/I/716Il5U5F4L._AC_UY218_.jpg" alt="">     
+    <figcaption>Infinity - JBL Tranz 710</figcaption>
+    <p class="rat"><span class="rating">4.3&#9733</span>(9,345)</p>
+    <h5 style="font-size: 14px;" class="rate">₹19,000 <del>₹25000 </del> <span class="off"> 23%off</span></h5>
+    <button class="imgbut" onclick="ordered('Infinity-JBL Tranz 710',19000)">ADD CART</button>
+</figure>
+
+<figure>
+    <img class="HEAimg"  src="https://m.media-amazon.com/images/I/51xxA+6E+xL._AC_UY218_.jpg" alt="">     
+    <figcaption>boAt Rockerz 450 Bluetooth</figcaption>
+    <p class="rat"><span class="rating">4.3&#9733</span>(7,345)</p>
+    <h5 style="font-size: 14px;" class="rate">₹3,000 <del>₹6000 </del> <span class="off"> 50%off</span></h5>
+    <button class="imgbut" onclick="ordered('boAt Rockerz 450',3000)">ADD CART</button>
+</figure>
+<figure>
+    <img class="HEAimg"  src="https://m.media-amazon.com/images/I/719elVA3FvL._AC_UY218_.jpg" alt="">     
+    <figcaption>boAt BassHeads 100 </figcaption>
+    <p class="rat"><span class="rating">4.3&#9733</span>(3,345)</p>
+    <h5 style="font-size: 14px;" class="rate">₹100 <del>₹500 </del> <span class="off"> 80%off</span></h5>
+    <button class="imgbut" onclick="ordered('boAt BassHeads 100',100)">ADD CART</button>
+</figure>
+<figure>
+    <img class="HEAimg"  src="https://m.media-amazon.com/images/I/51+r7d3OqaL._AC_UY218_.jpg" alt="">     
+    <figcaption>PTron Tangent Sports</figcaption>
+    <p class="rat"><span class="rating">4.3&#9733</span>(9,345)</p>
+    <h5 style="font-size: 14px;" class="rate">₹5,000 <del>₹25000 </del> <span class="off"> 80%off</span></h5>
+    <button class="imgbut" onclick="ordered('PTron Tangent Sports',5000)">ADD CART</button>
+</figure>
+<figure>
+    <img class="HEAimg"  src="https://m.media-amazon.com/images/I/61nerorzssL._AC_UY218_.jpg" alt="">     
+    <figcaption>boAt Bassheads 162 </figcaption>
+    <p class="rat"><span class="rating">4.3&#9733</span>(8,345)</p>
+    <h5 style="font-size: 14px;" class="rate">₹150 <del>₹300 </del> <span class="off"> 50%off</span></h5>
+    <button class="imgbut" onclick="ordered('boAt Bassheads 162',150)">ADD CART</button>
+</figure>
+<figure>
+    <img class="HEAimg"  src="https://m.media-amazon.com/images/I/61jFYObJsvL._AC_UY218_.jpg" alt="">     
+    <figcaption>  beatXP Marv Neo 1.85 </figcaption>
+    <p class="rat"><span class="rating">4.3&#9733</span>(5,345)</p>
+    <h5 style="font-size: 14px;" class="rate">₹2,000 <del>₹10000 </del> <span class="off"> 80%off</span></h5>
+    <button class="imgbut" onclick="ordered('beatXP Marv Neo',2000)">ADD CART</button>
+</figure>
+<figure>
+    <img class="HEAimg"  src="https://m.media-amazon.com/images/I/61V4qp8voWL._AC_UY218_.jpg" alt="">     
+    <figcaption>Amazfit Bip 5 Smart Watch</figcaption>
+    <p class="rat"><span class="rating">4.3&#9733</span>(4,345)</p>
+    <h5 style="font-size: 14px;" class="rate">₹5,000 <del>₹15000 </del> <span class="off"> 33%off</span></h5>
+    <button class="imgbut" onclick="ordered('Amazfit Bip 5 Smart Watch',5000)">ADD CART</button>
+</figure>
+<figure>
+    <img class="HEAimg"  src="https://m.media-amazon.com/images/I/618fpS1lonL._AC_UY218_.jpg" alt="">     
+    <figcaption>boAt Wave Style Smart Watch </figcaption>
+    <p class="rat"><span class="rating">4.2&#9733</span>(12,345)</p>
+    <h5 style="font-size: 14px;" class="rate">₹19,000 <del>₹25000 </del> <span class="off"> 23%off</span></h5>
+    <button class="imgbut" onclick="ordered('boAt Wave Style Smart Watch',19000)">ADD CART</button>
+</figure>
+<figure>
+    <img class="HEAimg"  src="https://m.media-amazon.com/images/I/71Yro+y7CQL._AC_UY218_.jpg" alt="">     
+    <figcaption>boAt Wave Sigma Smart Watch</figcaption>
+    <p class="rat"><span class="rating">4.3&#9733</span>(54,345)</p>
+    <h5 style="font-size: 14px;" class="rate">₹6,000 <del>₹18000 </del> <span class="off"> 33%off</span></h5>
+    <button class="imgbut" onclick="ordered('boAt Wave Style Smart Watch',6000)">ADD CART</button>
+</figure>
+<figure>
+    <img class="HEAimg"  src="https://m.media-amazon.com/images/I/71JDQUUv1tL._AC_UY218_.jpg" alt="">     
+    <figcaption>Fire-Boltt Phoenix Pro 1.39" </figcaption>
+    <p class="rat"><span class="rating">4.3&#9733</span>(12,345)</p>
+    <h5 style="font-size: 14px;" class="rate">₹4,000 <del>₹8000 </del> <span class="off"> 50%off</span></h5>
+    <button class="imgbut" onclick="ordered('Fire-Boltt Phoenix Pro',4000)">ADD CART</button>
+</figure>
+<figure>
+    <img class="HEAimg"  src="https://m.media-amazon.com/images/I/61SSVxTSs3L._AC_UY218_.jpg" alt="">     
+    <figcaption>Fire-Boltt Phoenix Ultra Luxury </figcaption>
+    <p class="rat"><span class="rating">4.3&#9733</span>(12,345)</p>
+    <h5 style="font-size: 14px;" class="rate">₹15,000 <del>₹30000 </del> <span class="off"> 50%off</span></h5>
+    <button class="imgbut" onclick="ordered('Fire-Boltt Phoenix Ultra Luxury',15000)">ADD CART</button>
+</figure>
+<figure>
+    <img class="HEAimg"  src="https://m.media-amazon.com/images/I/61wFPVRF2TL._AC_UY218_.jpg" alt="">     
+    <figcaption>Amazon Basics 35W Wall Charger</figcaption>
+    <p class="rat"><span class="rating">4.3&#9733</span>(12,345)</p>
+    <h5 style="font-size: 14px;" class="rate">₹1,000 <del>₹2000 </del> <span class="off"> 50%off</span></h5>
+    <button class="imgbut" onclick="ordered('Amazon Basics 35W',1000)">ADD CART</button>
+</figure>
+<figure>
+    <img class="HEAimg"  src="https://m.media-amazon.com/images/I/619pp546sKL._AC_UY218_.jpg" alt="">     
+    <figcaption>DR VAKU® 20W Type C Adapter</figcaption>
+    <p class="rat"><span class="rating">4.3&#9733</span>(12,345)</p>
+    <h5 style="font-size: 14px;" class="rate">₹1500 <del>₹2000 </del> <span class="off"> 25%off</span></h5>
+    <button class="imgbut" onclick="ordered('DR VAKU® 20W Type C',1500)">ADD CART</button>
+</figure>
+<figure>
+    <img class="HEAimg"  src="https://m.media-amazon.com/images/I/418Me4xUrkL._AC_UY218_.jpg" alt="">     
+    <figcaption>Mi 5V Charger|10W Wall</figcaption>
+    <p class="rat"><span class="rating">4.3&#9733</span>(12,345)</p>
+    <h5 style="font-size: 14px;" class="rate">₹2500 <del>₹5000 </del> <span class="off"> 50%off</span></h5>
+    <button class="imgbut" onclick="ordered('Mi 5V Charger',2500)">ADD CART</button>
+</figure>
+<figure>
+    <img class="HEAimg"  src="https://m.media-amazon.com/images/I/51PU2R0hdXL._AC_UY218_.jpg" alt="">     
+    <figcaption>Duracell 20 Watts Fast Wall Charger</figcaption>
+    <p class="rat"><span class="rating">4.3&#9733</span>(12,345)</p>
+    <h5 style="font-size: 14px;" class="rate">₹500 <del>₹2000 </del> <span class="off"> 75%off</span></h5>
+    <button class="imgbut" onclick="ordered('Duracell 20 Watts',500)">ADD CART</button>
+</figure>
+</div>
+
+<!--lapppp-->
+<div id="lap" style="display: none;">
+    <figure>
+        <img class="lapimg" src="https://m.media-amazon.com/images/I/51DmOWr3rnL._AC_UL320_.jpg" alt="">     
+        <figcaption>ASUS Vivobook S 15 OLED (2023)</figcaption>
+        <p class="rat"><span class="rating">4.9&#9733</span>(12,745)</p>
+        <h5 style="font-size: 14px;" class="rate">₹40,000 <del>₹80000 </del> <span class="off"> 50%off</span></h5>
+        <button class="imgbut" onclick="ordered('ASUS Vivobook S 15 OLED',40000)">ADD CART</button>
+    </figure>
+    <figure>
+        <img class="lapimg" src="https://m.media-amazon.com/images/I/71hbhqTUnAL._AC_UL320_.jpg" alt="">     
+        <figcaption>HP Pavilion Gaming 11th Gen </figcaption>
+        <p class="rat"><span class="rating">4.3&#9733</span>(12,367)</p>
+        <h5 style="font-size: 14px;" class="rate">₹44,000 <del>₹80000 </del> <span class="off"> 45%off</span></h5>
+        <button class="imgbut" onclick="ordered('HP Pavilion Gaming 11th Gen',44000)">ADD CART</button>
+    </figure>
+    <figure>
+        <img class="lapimg" src="https://m.media-amazon.com/images/I/710X-ZF2RDL._AC_UL320_.jpg" alt="">     
+        <figcaption>ASUS Vivobook 15 (2023)</figcaption>
+        <p class="rat"><span class="rating">4.1&#9733</span>(12,356)</p>
+        <h5 style="font-size: 14px;" class="rate">₹85,000 <del>₹120000 </del> <span class="off"> 24%off</span></h5>
+        <button class="imgbut" onclick="ordered('ASUS Vivobook 15',85000)">ADD CART</button>
+    </figure>
+    <figure>
+        <img class="lapimg"  src="https://m.media-amazon.com/images/I/71kRuqzdLML._AC_UL320_.jpg" alt="">     
+        <figcaption>ASUS Vivobook S15 OLED 2022</figcaption>
+        <p class="rat"><span class="rating">4.2&#9733</span>(52,345)</p>
+        <h5 style="font-size: 14px;" class="rate">₹25,000 <del>₹50000 </del> <span class="off"> 50%off</span></h5>
+        <button class="imgbut" onclick="ordered('ASUS Vivobook S15',25000)">ADD CART</button>
+    </figure>
+    <figure>
+        <img class="lapimg"  src="https://m.media-amazon.com/images/I/71dAYFhRTcL._AC_UY218_.jpg" alt="">     
+        <figcaption>ASUS Vivobook 15 laptop</figcaption>
+        <p class="rat"><span class="rating">4.2&#9733</span>(55,345)</p>
+        <h5 style="font-size: 14px;" class="rate">₹18,000 <del>₹24000 </del> <span class="off"> 33%off</span></h5>
+        <button class="imgbut" onclick="ordered('ASUS Vivobook 15',18000)">ADD CART</button>
+    </figure>
+    <figure>
+        <img class="lapimg"  src="https://m.media-amazon.com/images/I/51cVJdMGznL._AC_UY218_.jpg" alt="">     
+        <figcaption>Lenovo IdeaPad Slim Laptop</figcaption>
+        <p class="rat"><span class="rating">4.7&#9733</span>(17,322)</p>
+        <h5 style="font-size: 14px;" class="rate">₹24,000 <del>₹30000 </del> <span class="off"> 20%off</span></h5>
+        <button class="imgbut" onclick="ordered('Lenovo IdeaPad',24000)">ADD CART</button>
+    </figure>
+    <figure>
+        <img class="lapimg"  src="https://m.media-amazon.com/images/I/71czGb00k5L._AC_UY218_.jpg" alt="">     
+        <figcaption>Acer Aspire Lite 11th Gen </figcaption>
+        <p class="rat"><span class="rating">4.3&#9733</span>(12,985)</p>
+        <h5 style="font-size: 14px;" class="rate">₹70,000 <del>₹100000 </del> <span class="off"> 30%off</span></h5>
+        <button class="imgbut" onclick="ordered('Acer Aspire',70000)">ADD CART</button>
+    </figure>
+    <figure>
+        <img class="lapimg"  src="https://m.media-amazon.com/images/I/71Blj59DzzL._AC_UY218_.jpg" alt="">     
+        <figcaption>HP Laptop 15s, 12th Gen </figcaption>
+        <p class="rat"><span class="rating">4.7&#9733</span>(12,123)</p>
+        <h5 style="font-size: 14px;" class="rate">₹44,000 <del>₹50000 </del> <span class="off"> 21%off</span></h5>
+        <button class="imgbut" onclick="ordered('HP Laptop 15s',44000)">ADD CART</button>
+    </figure>
+    <figure>
+        <img class="lapimg" src="https://m.media-amazon.com/images/I/71czGb00k5L._AC_UY218_.jpg" alt="">     
+        <figcaption>Acer Aspire Lite AMD Ryzen</figcaption>
+        <p class="rat"><span class="rating">4.1&#9733</span>(12,974)</p>
+        <h5 style="font-size: 14px;" class="rate">₹15,000 <del>₹30000 </del> <span class="off"> 50%off</span></h5>
+        <button class="imgbut" onclick="ordered('Acer Aspire Lite',15000)">ADD CART</button>
+    </figure>
+    <figure>
+        <img class="lapimg"  src="https://m.media-amazon.com/images/I/81SCRIobVAL._AC_UY218_.jpg" alt="">     
+        <figcaption>HP Laptop 15s, AMD Ryzen</figcaption>
+        <p class="rat"><span class="rating">4.6&#9733</span>(12,675)</p>
+        <h5 style="font-size: 14px;" class="rate">₹19,000 <del>₹25000 </del> <span class="off"> 23%off</span></h5>
+        <button class="imgbut" onclick="ordered('HP Laptop 15s',19000)">ADD CART</button>
+    </figure>
+    <figure>
+        <img class="lapimg"  src="https://m.media-amazon.com/images/I/71czGb00k5L._AC_UY218_.jpg" alt="">     
+        <figcaption>Acer Aspire Lite AMD Ryzen</figcaption>
+        <p class="rat"><span class="rating">4.0&#9733</span>(12,345)</p>
+        <h5 style="font-size: 14px;" class="rate">₹45,000 <del>₹50000 </del> <span class="off"> 10%off</span></h5>
+        <button class="imgbut" onclick="ordered('Acer Aspire Lite',45000)">ADD CART</button>
+    </figure>
+    <figure>
+        <img class="lapimg"  src="https://m.media-amazon.com/images/I/61eTPcEsC+L._AC_UY218_.jpg" alt="">     
+        <figcaption>ASUS Vivobook Pro 15</figcaption>
+        <p class="rat"><span class="rating">4.5&#9733</span>(12,345)</p>
+        <h5 style="font-size: 14px;" class="rate">₹25,000 <del>₹75000 </del> <span class="off"> 33%off</span></h5>
+        <button class="imgbut" onclick="ordered('ASUS Vivobook Pro 15',25000)">ADD CART</button>
+    </figure>
+    <figure>
+        <img class="lapimg"  src="https://m.media-amazon.com/images/I/71--IQUHVwL._AC_UY218_.jpg" alt="">     
+        <figcaption>Lenov IdeaPad Gaming 3  </figcaption>
+        <p class="rat"><span class="rating">4.3&#9733</span>(12,345)</p>
+        <h5 style="font-size: 14px;" class="rate">₹24,000 <del>₹30000 </del> <span class="off"> 20%off</span></h5>
+        <button class="imgbut" onclick="ordered('Lenov IdeaPad ',24000)">ADD CART</button>
+    </figure>
+    <figure>
+        <img  class="lapimg" src="https://m.media-amazon.com/images/I/61xzutxSl8L._AC_UY218_.jpg" alt="">     
+        <figcaption>Acer Aspire 5 Gaming Laptop</figcaption>
+        <p class="rat"><span class="rating">4.2&#9733</span>(12,345)</p>
+        <h5 style="font-size: 14px;" class="rate">₹12,000 <del>₹20000 </del> <span class="off"> 40%off</span></h5>
+        <button class="imgbut" onclick="ordered('Acer Aspire 5',12000)">ADD CART</button>
+    </figure>
+    <figure>
+        <img  class="lapimg" src="https://m.media-amazon.com/images/I/71Dh450OVpL._AC_UY218_.jpg" alt="">     
+        <figcaption>Samsung Galaxy Book3 Pro </figcaption>
+        <p class="rat"><span class="rating">4.9&#9733</span>(12,365)</p>
+        <h5 style="font-size: 14px;" class="rate">₹45,000 <del>₹60000 </del> <span class="off"> 25%off</span></h5>
+        <button class="imgbut" onclick="ordered('Samsung Galaxy Book3 Pro ',45000)">ADD CART</button>
+    </figure>
+    <figure>
+        <img  class="lapimg" src="https://m.media-amazon.com/images/I/71NjNYTRy3L._AC_UY218_.jpg" alt="">     
+        <figcaption>Samsung Galaxy Book3 360</figcaption>
+        <p class="rat"><span class="rating">4.3&#9733</span>(12,345)</p>
+        <h5 style="font-size: 14px;" class="rate">₹30,000 <del>₹60000 </del> <span class="off"> 50%off</span></h5>
+        <button class="imgbut" onclick="ordered('Samsung Galaxy Book3 360',30000)">ADD CART</button>
+    </figure>
+    <figure>
+        <img class="lapimg"  src="https://m.media-amazon.com/images/I/71jG+e7roXL._AC_UY218_.jpg" alt="">     
+        <figcaption>Apple MacBook Air Laptop M1</figcaption>
+        <p class="rat"><span class="rating">4.3&#9733</span>(12,345)</p>
+        <h5 style="font-size: 14px;" class="rate">₹75,000 <del>₹100000 </del> <span class="off"> 25%off</span></h5>
+        <button class="imgbut" onclick="ordered('Apple MacBook',75000)">ADD CART</button>
+    </figure>
+    <figure>
+        <img class="lapimg"  src="https://m.media-amazon.com/images/I/71f5Eu5lJSL._AC_UY218_.jpg" alt="">     
+        <figcaption>Apple 2022 MacBook Laptop</figcaption>
+        <p class="rat"><span class="rating">4.3&#9733</span>(12,345)</p>
+        <h5 style="font-size: 14px;" class="rate">₹90,000 <del>₹100000 </del> <span class="off"> 10%off</span></h5>
+        <button class="imgbut" onclick="ordered('Apple 2022 MacBook',90000)">ADD CART</button>
+    </figure>
+</div>
+<!--phooooo-->
+<div id="pho" style="display: none;">
+     
+    
+
+    <figure>
+        <img src="https://m.media-amazon.com/images/I/61bK6PMOC3L._AC_UY218_.jpg" alt="">     
+        <figcaption>Apple Iphone 14(4GB-128GB)</figcaption>
+        <p class="rat"><span class="rating">4.9&#9733</span>(1,345)</p>
+        <h5 style="font-size: 14px;" class="rate">₹75,000 <del>₹100000 </del> <span class="off"> 25%off</span></h5>
+        <button class="imgbut" onclick="ordered('Apple Iphone 14',75000)">ADD CART</button>
+    </figure>
+    <figure>
+        <img src="https://m.media-amazon.com/images/I/71UHrexGN5L._AC_UY218_.jpg" alt="">     
+        <figcaption>REDMI 9A(4GB-128GB)</figcaption>
+        <p class="rat"><span class="rating">4.4&#9733</span>(12,467)</p>
+        <h5 style="font-size: 14px;" class="rate">₹15,000 <del>₹30000 </del> <span class="off"> 50%off</span></h5>
+        <button class="imgbut" onclick="ordered('REDMI 9A',15000)">ADD CART</button>
+    </figure>
+
+    <figure>
+        <img src="https://m.media-amazon.com/images/I/61brUtKPajL._AC_UY218_.jpg" alt="">     
+        <figcaption>REDMI NOTE 12 4G</figcaption>
+        <p class="rat"><span class="rating">3.9&#9733</span>(12,445)</p>
+        <h5 style="font-size: 14px;" class="rate">₹15,000 <del>₹25000 </del> <span class="off"> 40%off</span></h5>
+        <button class="imgbut" onclick="ordered('REDMI NOTE 12 4G',15000)">ADD CART</button>
+    </figure>
+
+    <figure>
+        <img src="https://m.media-amazon.com/images/I/61PPGiFRDML._AC_UY218_.jpg" alt="">     
+        <figcaption>REDMI 9 C(4GB-128GB)</figcaption>
+        <p class="rat"><span class="rating">4.0&#9733</span>(12,976)</p>
+        <h5 style="font-size: 14px;" class="rate">₹9,000 <del>₹24000 </del> <span class="off"> 25%off</span></h5>
+        <button class="imgbut" onclick="ordered('REDMI 9 C',9000)">ADD CART</button>
+    </figure>
+
+    <figure>
+        <img src="https://m.media-amazon.com/images/I/51oW-QOqhaL._AC_UY218_.jpg" alt="">     
+        <figcaption>VIVO iQOO Z7s 5G(4GB-128GB)</figcaption>
+        <p class="rat"><span class="rating">4.9&#9733</span>(72,345)</p>
+        <h5 style="font-size: 14px;" class="rate">₹25,000 <del>₹40000 </del> <span class="off"> 40%off</span></h5>
+        <button class="imgbut" onclick="ordered('VIVO iQOO Z7s 5G',25000)">ADD CART</button>
+    </figure>
+
+    <figure>
+        <img src="https://m.media-amazon.com/images/I/61gdyDHr9ZL._AC_UY218_.jpg" alt="">     
+        <figcaption>Vivo Y27(4GB-128GB)</figcaption>
+        <p class="rat"><span class="rating">4.8&#9733</span>(19,375)</p>
+        <h5 style="font-size: 14px;" class="rate">₹8,000 <del>₹25000 </del> <span class="off"> 74%off</span></h5>
+        <button class="imgbut" onclick="ordered('Vivo Y27',8000)">ADD CART</button>
+    </figure>
+
+    <figure>
+        <img src="https://m.media-amazon.com/images/I/81t-iyg0JfL._AC_UY218_.jpg" alt="">     
+        <figcaption>Oppo F23 5G(4GB-128GB)</figcaption>
+        <p class="rat"><span class="rating">4.8&#9733</span>(19,845)</p>
+        <h5 style="font-size: 14px;" class="rate">₹18,000 <del>₹24000 </del> <span class="off"> 33%off</span></h5>
+        <button class="imgbut" onclick="ordered('Oppo F23 5G',18000)">ADD CART</button>
+    </figure>
+    <figure>
+        <img src="https://m.media-amazon.com/images/I/71ZXHg7Oh6L._AC_UY218_.jpg" alt="">     
+        <figcaption>SAMSUNG GALAXY S23</figcaption>
+        <p class="rat"><span class="rating">4.4&#9733</span>(12,345)</p>
+        <h5 style="font-size: 14px;" class="rate">₹93,000 <del>₹100000 </del> <span class="off"> 8%%off</span></h5>
+        <button class="imgbut" onclick="ordered('SAMSUNG GALAXY S23',93000)">ADD CART</button>
+    </figure>
+    
+    <figure>
+        <img src="https://m.media-amazon.com/images/I/61hrvDfFNtL._AC_UY218_.jpg" alt="">     
+        <figcaption>SAMSUNG GALAXY A14</figcaption>
+        <p class="rat"><span class="rating">4.8&#9733</span>(12,345)</p>
+        <h5 style="font-size: 14px;" class="rate">₹45,000 <del>₹50000 </del> <span class="off"> 10%off</span></h5>
+        <button class="imgbut" onclick="ordered('SAMSUNG GALAXY A14',45000)">ADD CART</button>
+    </figure>
+
+   <figure>
+        <img src="https://m.media-amazon.com/images/I/61MEp5HIdBL._AC_UY218_.jpg" alt="">
+        <figcaption>SAMSUNG GALAXY A54</figcaption>
+        <p class="rat"><span class="rating">4.2&#9733</span>(12,345)</p>
+        <h5 style="font-size: 14px;" class="rate">₹82,000 <del>₹90000 </del> <span class="off"> 9.4%off</span></h5>
+        <button class="imgbut" onclick="ordered('SAMSUNG GALAXY A54',82000)">ADD CART</button>
+    </figure>
+
+    <figure>    
+        <img src="https://m.media-amazon.com/images/I/51ExLzIc3sL._AC_UY218_.jpg" alt="">     
+        <figcaption>SAMSUNG GALAXY A34</figcaption>
+        <p class="rat"><span class="rating">4.0&#9733</span>(12,345)</p>
+        <h5 style="font-size: 14px;" class="rate">₹44,000 <del>₹80000 </del> <span class="off"> 45%off</span></h5>
+        <button class="imgbut" onclick="ordered('SAMSUNG GALAXY A34',44000)">ADD CART</button>
+    </figure>
+
+    <figure>
+        <img src="https://m.media-amazon.com/images/I/31lRhoqdT7L._AC_UY218_.jpg" alt="">     
+        <figcaption>SAMSUNG GALAXY A24</figcaption>
+        <p class="rat"><span class="rating">4.3&#9733</span>(12,375)</p>
+        <h5 style="font-size: 14px;" class="rate">₹19,000 <del>₹25000 </del> <span class="off"> 23%off</span></h5>
+        <button class="imgbut" onclick="ordered('SAMSUNG GALAXY A24',19000)">ADD CART</button>
+    </figure>
+
+    <figure>
+        <img src="https://m.media-amazon.com/images/I/61IqkfGCw5L._AC_UY218_.jpg" alt="">     
+        <figcaption>SAMSUNG GALAXY Z Flip</figcaption>
+        <p class="rat"><span class="rating">4.8&#9733</span>(12,786)</p>
+        <h5 style="font-size: 14px;" class="rate">₹80,000 <del>₹100000 </del> <span class="off"> 20%off</span></h5>
+        <button class="imgbut" onclick="ordered('SAMSUNG GALAXY Z Flip',80000)">ADD CART</button>
+    </figure>
+
+  
+    <figure>
+        <img src="https://m.media-amazon.com/images/I/81LrmorQeQL._AC_UY218_.jpg" alt="">     
+        <figcaption>Oppo A78 5G(4GB-128GB)</figcaption>
+        <p class="rat"><span class="rating">4.8&#9733</span>(99,345)</p>
+        <h5 style="font-size: 14px;" class="rate">₹22,000 <del>₹33000 </del> <span class="off"> 33%off</span></h5>
+        <button class="imgbut" onclick="ordered('Oppo A78 5G',22000)">ADD CART</button>
+    </figure>
+
+    <figure>
+        <img src="https://m.media-amazon.com/images/I/61BGE6iu4AL._AC_UY218_.jpg" alt="">     
+        <figcaption>Apple Iphone 14 Plus</figcaption>
+        <p class="rat"><span class="rating">4.2&#9733</span>(5,345)</p>
+        <h5 style="font-size: 14px;" class="rate">₹125,000 <del>₹150000 </del> <span class="off"> 30%off</span></h5>
+        <button class="imgbut" onclick="ordered('Apple Iphone 14 Plus',12500)">ADD CART</button>
+    </figure>
+
+    <figure>
+        <img src="https://m.media-amazon.com/images/I/610pghkO81L._AC_UY218_.jpg" alt="">     
+        <figcaption>Apple Iphone 14 Pro</figcaption>
+        <p class="rat"><span class="rating">4.3&#9733</span>(75,345)</p>
+        <h5 style="font-size: 14px;" class="rate">₹100,000 <del>₹125000 </del> <span class="off"> 25%off</span></h5>
+        <button class="imgbut" onclick="ordered('Apple Iphone 14 Pro',100000)">ADD CART</button>
+    </figure>
+
+    <figure>
+        <img src="https://m.media-amazon.com/images/I/61A0Zu4K-TL._AC_UY218_.jpg" alt="">     
+        <figcaption>Apple Iphone SE(4GB-128GB)</figcaption>
+        <p class="rat"><span class="rating">4.8&#9733</span>(52,345)</p>
+        <h5 style="font-size: 14px;" class="rate">₹70,000 <del>₹100000 </del> <span class="off"> 30%off</span></h5>
+        <button class="imgbut" onclick="ordered('Apple Iphone SE',70000)">ADD CART</button>
+    </figure>
+
+    <figure>
+        <img src="https://m.media-amazon.com/images/I/61-r9zOKBCL._AC_UY218_.jpg" alt="">     
+        <figcaption>Apple Iphone 13(4GB-128GB)</figcaption>
+        <p class="rat"><span class="rating">4.5&#9733</span>(10,345)</p>
+        <h5 style="font-size: 14px;" class="rate">₹80,000 <del>₹160000 </del> <span class="off"> 50%off</span></h5>
+        <button class="imgbut" onclick="ordered('Apple Iphone 13',80000)">ADD CART</button>
+    </figure>
+</div>
+    </div>
+    </article>
+
+
+
+
+
+    
+<footer>
+    <div id="footer">
+        <div>
+            <h4>Links</h4>
+            <p>Home</p>
+            <p>Mobile</p>
+            <p>Laptop</p>
+            <p>Gadgets</p>
+            <p>Card</p>
+        </div>
+        <div>
+            <h4>Guides</h4>
+            <p>Getting Started</p>
+            <p>Starter templates</p>
+            <p>Webpack</p>
+            <p>Parcel</p>
+            <p>Vite</p>
+        </div>
+        <div>
+            <h4>Community</h4>
+            <p>Issues</p>
+            <p>Discussions</p>
+            <p>Corporate sponsors</p>
+            <p>Open Collective</p>
+            <p>Stack Overflow</p>
+        </div>
+        <div>
+            <h4>Cantact</h4>
+            <p><i class="fa-brands fa-facebook"></i></p>
+            <p><i class="fa-brands fa-instagram" style="color: #ffffff;"></i></p>
+            <p><i class="fa-brands fa-twitter"></i></p>
+            <p><i class="fa-brands fa-whatsapp" style="color: #ffffff;"></i></p>
+        </div>
+        <div id="fox">
+            <img src="Picsart_23-08-26_16-04-31-738.png" style="height: 70px; vertical-align:top;display: inline;" alt="">
+            <p>Designed and built with all the love in the world by the Foxcon team with the help of our contributors.</p>
+            <p>Code licensed MIT, docs CC BY 3.0.
+            </p>
+            <p>Currently v5.3.1.</p>
+        </div>
+    </div>
+</footer>
+               <!-- Modal -->
+   <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+     
+    <div class="modal-dialog">
+    <div class="modal-content">
+    <div class="modal-body">
+    <div>
+         <H2 style="display: inline-block;">SIGN IN</H2>
+         <button style="float: right;" type="button" class="btn" data-bs-dismiss="modal">BACK</button>
+    </div>
+
+         <form>
+             <label for="#a">NAME</label>
+             <input id="a" type="text" placeholder="" required>
+            
+             <label>GENDER</label>
+             <select name="GENDER" required>
+             <option value=""> </option>
+             <option value="MALE">MALE</option>
+             <option value="FEMALE">FEMALE</option>
+             </select>
+            
+             <label for="#b">NUMBER</label>
+             <input id="b" type="number" placeholder="" required max="9999999999">
+            
+             <label for="#c">EMAIL</label>
+             <input type="email" placeholder="" required>
+            
+             <label for="#d">DATE OF BIRTH</label>
+             <INPUT type="date" >
+                 
+            <label>LOCATION</label>
+                <select name="LOCATION" required>
+                    <option value=""> </option>
+                    <option value="SALEM">SALEM</option>
+                    <option value="COIMBATURE">COIMBATURE</option>
+                    <option value="BANGALORE">BANGALORE</option>
+                    <option value="CHENNAI">CHENNAI</option>
+                </select>
+             
+             <label for="#g">CREATE PASSWORD</label>
+             <input type="password" placeholder="" required>
+             
+             <label for="#h">UPLOAD IMAGE</label>
+             <input type="file" accept="image/*" placeholder="" required>
+            
+            <button>SUBMIT</button>
+            
+         </form>
+     </div>
+   
+</div>
+</div>
+</div>
+</div>
+    </div>
+</body>
+</html>
