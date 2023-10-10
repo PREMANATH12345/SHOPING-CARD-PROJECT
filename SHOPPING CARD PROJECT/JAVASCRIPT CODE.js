@@ -41,8 +41,8 @@ else{
 const cart=[];
 
 /*ORDER ITEM */
-function ordered(name,price){
-    const items={names:`${name}`,prices:`${price}`}
+function ordered(name,price,img){
+    const items={names:`${name}`,prices:`${price}`,image:`${img}`}
     alert ("ADDED SUCCESSFULLY")
     cart.push(items);
     adding()
@@ -58,11 +58,14 @@ function adding(){
     const he11=document.createElement("th");
     const he22=document.createElement("th");
     const he33=document.createElement("th");
+    const he111=document.createElement("th");
     const he44=document.createElement("th");
+
 
     const he4=document.createTextNode("S.NO");
     const he5=document.createTextNode("PRODUCT NAME");
     const he6=document.createTextNode("PRICE");
+    const he1111=document.createTextNode("IMAGE");
     const he=document.createTextNode("");
 
     top.appendChild(topp)
@@ -72,12 +75,15 @@ function adding(){
     he1.appendChild(he11);
     he1.appendChild(he22);
     he1.appendChild(he33);
+    he1.appendChild(he111);
     he1.appendChild(he44);
+
 
 
     he11.appendChild(he4);
     he22.appendChild(he5);
     he33.appendChild(he6);
+    he111.appendChild(he1111)
     he44.appendChild(he);
 
 
@@ -88,6 +94,8 @@ function adding(){
         var tota=cart[i];
         var product=tota.names;
         var amount=Number(tota.prices);
+        var image=tota.image;
+
 
     total+=amount;
     document.getElementById("total").innerHTML=`${total}`;
@@ -101,18 +109,36 @@ function adding(){
     const c1=document.createElement("td");
     const c2=document.createElement("td");
     const c3=document.createElement("td");
+    const c11=document.createElement("td");
     const c4=document.createElement("td");
+
+
+
 
     const a1=document.createTextNode(sno);
     const a2=document.createTextNode(product);
+    const a11=document.createElement("img");
+    a11.src = cart[i].image;
+    a11.style.height='80px'
+    a11.style.width='60px'
+    a11.style.borderRadius='5px'
+
+
+
+    c11.appendChild(a11);
     const a3=document.createTextNode(amount);
     const a4=document.createElement("button");
     a4.innerHTML=`<i class="fa-solid fa-trash"></i>`;
     a4.style.backgroundColor='var(--head)'
-    a4.style.color='red'
+    a4.style.color='white'
     a4.style.padding='0px';
     a4.style.fontWeight='100';
-
+    a4.addEventListener('mouseover', () => {
+        a4.style.color = 'red';
+      });
+      a4.addEventListener('mouseout', () => {
+        a4.style.color = 'white';
+      });
 
 
     a4.addEventListener('click',remove)
@@ -124,12 +150,15 @@ function adding(){
     main.appendChild(c1);
     main.appendChild(c2);
     main.appendChild(c3);
+    main.appendChild(c11);
     main.appendChild(c4);
+
 
     c1.appendChild(a1);
     c2.appendChild(a2);
     c3.appendChild(a3);
     c4.appendChild(a4);
+    c11.appendChild(a11)
     
     }
    
@@ -137,8 +166,11 @@ function adding(){
 
 function remove(){
     cart.splice(0, 1);
-    adding()
-  
+    if (cart.length==0){
+        document.getElementById("total").innerHTML=0;
+      }
+    adding();
+ 
 }
 /*ORDER */
 function order(){
